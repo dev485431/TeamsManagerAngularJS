@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('awesome-app.home', ['ui.router']).
+angular.module('awesome-app.home', ['ui.router', 'ui.bootstrap']).
 
 config(function config($stateProvider) {
 
@@ -8,6 +8,6 @@ config(function config($stateProvider) {
         .state('home', {
             url: '^/home',
             controller: 'HomeCtrl',
-            templateUrl: 'home/home.tpl.html'
+            templateUrl: 'home/home.tpl.html',
         });
 });

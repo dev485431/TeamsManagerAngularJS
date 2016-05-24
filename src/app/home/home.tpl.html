@@ -1,35 +1,16 @@
-<div class="app-home">
-    <div class="row">
+<div ng-controller="HomeCtrl">
 
-        <div class="col-xs-12">
-            <!--<h1>Hello Awesome App {{ 'v%VERSION%' | versionInterpolate }}!</h1>-->
-            <!--<p>My skills are {{teamMember.getSkills()}}</p>-->
-            <!--&lt;!&ndash;<p>tabData: {{tabData}}</p>&ndash;&gt;-->
-        </div>
+    <tabset>
+        <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+            {{tab.content}}
+        </tab>
+    </tabset>
 
-        <tabs data="tabData" type="pills" type="tabs"></tabs>
-        <!-- DIRECTIVE FOR TEAM MANAGEMENT HERE ???-->
+    <hr />
 
-        <!--<div class="col-md-5 col-xs-12">-->
-
-            <!--<div class="well well-lg">-->
-                <!--<ul>-->
-                    <!--<li><a href="http://www.sitepoint.com/10-reasons-use-angularjs/" target="_blank">10 Reasons Why You Should Use AngularJS</a></li>-->
-                    <!--<li><a href="http://wintellect.com/blogs/jlikness/10-reasons-web-developers-should-learn-angularjs" target="_blank">10 Reasons Why Developers Should Learn AngularJS</a></li>-->
-                    <!--<li><a href="https://www.youtube.com/watch?v=HCR7i5F5L8c" target="_blank">Design Principles of AngularJS (video)</a></li>-->
-                    <!--<li><a href="http://www.youtube.com/watch?v=i9MHigUZKEM" target="_blank">Fundamentals in 60 Minutes (video)</a></li>-->
-                    <!--<li><a href="http://stackoverflow.com/questions/14994391/how-do-i-think-in-angularjs-if-i-have-a-jquery-background" target="_blank">For folks with a jQuery background</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
-
-        <!--</div>-->
-
-        <div class="col-md-6 col-md-offset-1 col-xs-12">
-
-            <!--<div class="embed-responsive embed-responsive-4by3">-->
-                <!--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZhfUv0spHCY?showinfo=0" frameborder="0" allowfullscreen></iframe>-->
-            <!--</div>-->
-
-        </div>
-    </div>
+    <tabset justified="true">
+        <tab heading="Justified">Justified content</tab>
+        <tab heading="SJ">Short Labeled Justified content</tab>
+        <tab heading="Long Justified">Long Labeled Justified content</tab>
+    </tabset>
 </div>

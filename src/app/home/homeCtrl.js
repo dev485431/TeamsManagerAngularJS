@@ -2,26 +2,18 @@
 
 angular.module('awesome-app.home').
 
-controller('HomeCtrl', function ($scope, TeamMemberModel, TeamMemberCollection) {
+controller('HomeCtrl', function ($scope, $window, TeamMemberModel, TeamMemberCollection) {
 
-    $scope.team = new TeamMemberCollection('DataArt');
+    // $scope.team = new TeamMemberCollection('DataArt');
+    //
+    // $scope.teamMember = new TeamMemberModel('John')
+    //     .addSkills(['JavaScript', 'AngularJS']);
+    //
+    // $scope.team.addMember($scope.teamMember);
 
-    $scope.teamMember = new TeamMemberModel('John')
-        .addSkills(['JavaScript', 'AngularJS']);
-
-    $scope.team.addMember($scope.teamMember);
-
-    $scope.tabData = [
-        {
-            heading: 'Search',
-            route: 'search',
-            class: 'nav nav-pills'
-        },
-        {
-            heading: 'Choose',
-            route: 'choose',
-            class: 'nav nav-pills'
-        }
+    $scope.tabs = [
+        { title:'Dynamic Title 1', content:'Dynamic content 1', active: true },
+        { title:'Dynamic Title 2', content:'Dynamic content 2' }
     ];
 
 });

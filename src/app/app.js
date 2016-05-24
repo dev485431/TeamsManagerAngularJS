@@ -2,7 +2,6 @@
 
 angular.module('awesome-app', [
     'ui.router',
-    'ui.router.tabs',
     'ui.bootstrap',
     'ngSanitize',
     'templates-app',
