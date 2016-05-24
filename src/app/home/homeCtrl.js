@@ -21,11 +21,6 @@ controller('HomeCtrl', function ($scope, TeamMemberModel, TeamMemberCollection) 
             heading: 'Choose',
             route: 'choose',
             class: 'nav nav-pills'
-        },
-        {
-            heading: 'Drop',
-            route: 'drop',
-            class: 'nav nav-pills'
         }
     ];
 
