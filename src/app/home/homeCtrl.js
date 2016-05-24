@@ -11,4 +11,22 @@ controller('HomeCtrl', function ($scope, TeamMemberModel, TeamMemberCollection) 
 
     $scope.team.addMember($scope.teamMember);
 
+    $scope.tabData = [
+        {
+            heading: 'Search',
+            route: 'search',
+            class: 'nav nav-pills'
+        },
+        {
+            heading: 'Choose',
+            route: 'choose',
+            class: 'nav nav-pills'
+        },
+        {
+            heading: 'Drop',
+            route: 'drop',
+            class: 'nav nav-pills'
+        }
+    ];
+
 });

@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('awesome-app.tabs', ['ui.router', 'ui.router.tabs'])
+angular.module('awesome-app.tabs')
     .config(function config($stateProvider) {
 
     $stateProvider
-        .state('tabs.search', {
+        .state('search', {
             url: '^/search',
-            templateUrl: 'search/search.tpl.html',
+            templateUrl: 'tabs/search/search.tpl.html',
             controller: 'SearchCtrl'
 
         });

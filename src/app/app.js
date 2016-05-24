@@ -2,15 +2,15 @@
 
 angular.module('awesome-app', [
     'ui.router',
+    'ui.router.tabs',
     'ui.bootstrap',
     'ngSanitize',
-    'ui.router.tabs',
     'templates-app',
     'awesome-app.common',
-    'awesome-app.about',
-    'awesome-app.search',
-    'awesome-app.choose',
+    'awesome-app.home',
+    'awesome-app.tabs',
+    'awesome-app.about'
 ]).
 config(['$urlRouterProvider', function($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/search');
+    $urlRouterProvider.otherwise('/home');
 }]);

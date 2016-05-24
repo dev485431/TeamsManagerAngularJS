@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('awesome-app.choose').
+angular.module('awesome-app.tabs').
 
 controller('ChooseCtrl', function ($scope) {
 

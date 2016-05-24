@@ -4,9 +4,9 @@ angular.module('awesome-app.tabs', ['ui.router', 'ui.router.tabs'])
     .config(function config($stateProvider) {
 
     $stateProvider
-        .state('tabs.choose', {
+        .state('choose', {
             url: '^/choose',
-            templateUrl: 'choose/choose.tpl.html',
+            templateUrl: 'tabs/choose/choose.tpl.html',
             controller: 'ChooseCtrl'
 
         });

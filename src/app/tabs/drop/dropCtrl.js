@@ -2,8 +2,8 @@
 
 angular.module('awesome-app.tabs').
 
-controller('SearchCtrl', function ($scope) {
-    
+controller('DropCtrl', function ($scope) {
+
 
 
 });
