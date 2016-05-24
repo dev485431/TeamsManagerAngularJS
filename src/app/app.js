@@ -11,5 +11,5 @@ angular.module('awesome-app', [
     'awesome-app.about'
 ]).
 config(['$urlRouterProvider', function($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home/search');
 }]);

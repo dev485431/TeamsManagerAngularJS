@@ -6,7 +6,8 @@ config(function config($stateProvider) {
 
     $stateProvider
         .state('home', {
-            url: '^/home',
+            abstract: true,
+            url: '/home',
             controller: 'HomeCtrl',
             templateUrl: 'home/home.tpl.html',
         });
