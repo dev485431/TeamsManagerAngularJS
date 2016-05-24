@@ -12,8 +12,8 @@ controller('HomeCtrl', function ($scope, $window, TeamMemberModel, TeamMemberCol
     // $scope.team.addMember($scope.teamMember);
 
     $scope.tabs = [
-        { title:'Dynamic Title 1', content:'Dynamic content 1', active: true },
-        { title:'Dynamic Title 2', content:'Dynamic content 2' }
+        { title:'Search', content:'Dynamic content 1', active: true },
+        { title:'List', content:'Dynamic content 2' }
     ];
 
 });
