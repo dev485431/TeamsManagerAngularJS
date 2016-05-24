@@ -2,14 +2,7 @@
 
 angular.module('awesome-app.home').
 
-controller('HomeCtrl', function ($scope, $window, TeamMemberModel, TeamMemberCollection) {
-
-    // $scope.team = new TeamMemberCollection('DataArt');
-    //
-    // $scope.teamMember = new TeamMemberModel('John')
-    //     .addSkills(['JavaScript', 'AngularJS']);
-    //
-    // $scope.team.addMember($scope.teamMember);
+controller('HomeCtrl', function ($scope) {
 
     $scope.tabs = [
         { title:'Search', content:'Dynamic content 1', active: true },
