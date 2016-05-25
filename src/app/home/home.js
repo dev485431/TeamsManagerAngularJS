@@ -9,6 +9,7 @@ config(function config($stateProvider) {
             abstract: true,
             url: '/home',
             controller: 'HomeCtrl',
-            templateUrl: 'home/home.tpl.html',
+            templateUrl: 'home/home.tpl.html'
+            
         });
 });

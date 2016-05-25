@@ -4,9 +4,9 @@ angular.module('awesome-app.teams',  ['ui.router'])
     .config(function config($stateProvider) {
 
         $stateProvider
-            .state('teams', {
+            .state('home.teams', {
                 url: '/teams',
-                templateUrl: 'teams/teams.tpl.html',
+                templateUrl: 'home/teams/teams.tpl.html',
                 controller: 'TeamsCtrl'
 
             });
