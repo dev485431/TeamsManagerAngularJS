@@ -11,5 +11,5 @@ angular.module('awesome-app', [
     'awesome-app.teams'
 ]).
 config(['$urlRouterProvider', function($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/search');
+    $urlRouterProvider.otherwise('/home');
 }]);
