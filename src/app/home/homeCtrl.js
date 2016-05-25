@@ -5,7 +5,7 @@ angular.module('awesome-app.home').
 controller('HomeCtrl', function ($scope, $state) {
 
     $scope.tabs = [
-        { heading: "Search", route:"home.search", active:false },
+        { heading: "Search", route:"home.search", active:true },
         { heading: "List", route:"home.choose", active:false },
     ];
 
