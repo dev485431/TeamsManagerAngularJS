@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('awesome-app.tabs', ['ui.router', 'ui.router.tabs'])
+angular.module('awesome-app.tabs', ['ui.router'])
     .config(function config($stateProvider) {
 
     $stateProvider
