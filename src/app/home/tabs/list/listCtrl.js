@@ -2,7 +2,7 @@
 
 angular.module('awesome-app.tabs').
 
-controller('ChooseCtrl', function ($scope) {
+controller('ListCtrl', function ($scope) {
 
 
 

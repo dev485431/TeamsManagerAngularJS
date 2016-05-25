@@ -6,7 +6,7 @@ controller('HomeCtrl', function ($scope, $state) {
 
     $scope.tabs = [
         { heading: "Search", route:"home.search", active:true },
-        { heading: "List", route:"home.choose", active:false },
+        { heading: "List", route:"home.list", active:false },
     ];
 
     $scope.go = function(route){
