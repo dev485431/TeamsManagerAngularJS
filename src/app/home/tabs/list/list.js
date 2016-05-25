@@ -5,7 +5,7 @@ angular.module('awesome-app.tabs', ['ui.router', 'ui.router.tabs'])
 
     $stateProvider
         .state('home.list', {
-            url: '/choose',
+            url: '/list',
             templateUrl: 'home/tabs/list/list.tpl.html',
             controller: 'ListCtrl'
 
