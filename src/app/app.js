@@ -8,7 +8,7 @@ angular.module('awesome-app', [
     'awesome-app.common',
     'awesome-app.home',
     'awesome-app.tabs',
-    'awesome-app.teams',
+    'awesome-app.teams'
 ]).
 config(['$urlRouterProvider', function($urlRouterProvider) {
     $urlRouterProvider.otherwise('/search');
