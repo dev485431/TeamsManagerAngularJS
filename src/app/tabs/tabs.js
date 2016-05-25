@@ -5,7 +5,12 @@ angular.module('awesome-app.tabs')
 
         $stateProvider
             .state('home.tabs', {
-                abstract: true
+                abstract: true,
+                controller: 'TabsCtrl',
+
+                views: {
+                    'tabs':  { templateUrl: 'tabs/tabs.tpl.html' }
+                }
 
             });
     });

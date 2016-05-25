@@ -1,17 +1,3 @@
-<div ng-controller="HomeCtrl">
-
-    <tabset>
-        <tab
-                ng-repeat="t in tabs"
-                heading="{{t.heading}}"
-                select="go(t.route)"
-                active="t.active"
-                disabled="t.disabled">
-        </tab>
-    </tabset>
-
-    </br>
-    <div ui-view></div>
-    <div ui-view="teams"></div>
-
-</div>
+<!-- Add div layout here !!! -->
+<div ui-view="tabs"></div>
+<div ui-view="teams"></div>

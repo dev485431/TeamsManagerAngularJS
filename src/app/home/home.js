@@ -6,7 +6,6 @@ angular.module('awesome-app.home')
         $stateProvider
             .state('home', {
                 abstract: true,
-                controller: 'HomeCtrl',
                 templateUrl: 'home/home.tpl.html'
 
             });
