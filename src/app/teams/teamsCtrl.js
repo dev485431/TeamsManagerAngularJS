@@ -24,6 +24,10 @@ controller('TeamsCtrl', function ($scope) {
         $scope.items.push('Item ' + newItemNo);
     };
 
+    $scope.addTeam = function() {
+        console.log('team added');
+    };
+
     $scope.status = {
         isFirstOpen: true,
         isFirstDisabled: false
