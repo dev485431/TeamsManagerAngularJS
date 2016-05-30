@@ -6,10 +6,16 @@ angular.module('awesome-app.tabs')
         $stateProvider
             .state('home.tabs', {
                 abstract: true,
-                controller: 'TabsCtrl',
 
                 views: {
-                    'tabs':  { templateUrl: 'tabs/tabs.tpl.html' }
+                    'tabs':  {
+                        templateUrl: 'tabs/tabs.tpl.html',
+                        controller: 'TabsCtrl'
+                    },
+                    'teams':  {
+                        templateUrl: 'teams/teams.tpl.html',
+                        controller: 'TeamsCtrl'
+                    }
                 }
 
             });

@@ -5,9 +5,12 @@ angular.module('awesome-app.teams',  ['ui.router'])
 
         $stateProvider
             .state('home.teams', {
-                url: '/teams',
-                templateUrl: 'home/teams/teams.tpl.html',
-                controller: 'TeamsCtrl'
+                abstract: true,
+                controller: 'TeamsCtrl',
+
+                views: {
+                    'teams':  { templateUrl: 'teams/teams.tpl.html' }
+                }
 
             });
     });
