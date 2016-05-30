@@ -6,8 +6,14 @@ angular.module('awesome-app.tabs')
     $stateProvider
         .state('home.tabs.search', {
             url: '/search',
-            templateUrl: 'tabs/search/search.tpl.html',
-            controller: 'SearchCtrl'
+
+            views: {
+                'tab-content@home': {
+                    templateUrl: 'tabs/search/search.tpl.html',
+                    controller: 'SearchCtrl'
+                }
+            }
+
 
         });
 });

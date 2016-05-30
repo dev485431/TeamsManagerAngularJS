@@ -5,8 +5,18 @@ angular.module('awesome-app.home')
 
         $stateProvider
             .state('home', {
-                abstract: true,
-                templateUrl: 'home/home.tpl.html'
+                url: '/home',
+
+                views: {
+                    'tabs': {
+                        templateUrl: 'tabs/tabs.tpl.html',
+                        controller: 'TabsCtrl'
+                    },
+                    'teams': {
+                        templateUrl: 'teams/teams.tpl.html',
+                        controller: 'TeamsCtrl'
+                    }
+                }
 
             });
     });

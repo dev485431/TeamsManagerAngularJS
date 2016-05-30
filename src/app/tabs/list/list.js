@@ -6,8 +6,15 @@ angular.module('awesome-app.tabs')
     $stateProvider
         .state('home.tabs.list', {
             url: '/list',
-            templateUrl: 'tabs/list/list.tpl.html',
-            controller: 'ListCtrl'
+
+            views: {
+                'tab-content@home': {
+                    templateUrl: 'tabs/list/list.tpl.html',
+                    controller: 'ListCtrl'
+                }
+            }
+
+
 
         });
 });
