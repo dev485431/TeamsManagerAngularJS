@@ -37,7 +37,6 @@ module.exports = function(grunt) {
                     '<%=bowerDir%>/angular-sanitize/angular-sanitize.js',
                     '<%=bowerDir%>/bootstrap/dist/js/bootstrap.js',
                     '<%=bowerDir%>/angular-ui-router/release/angular-ui-router.js',
-                    '<%=bowerDir%>/angular-ui-router-tabs/src/ui-router-tabs.js',
                     '<%=bowerDir%>/angular-bootstrap/ui-bootstrap-tpls.js',
                 ],
                 css: [

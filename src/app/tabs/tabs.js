@@ -8,13 +8,9 @@ angular.module('awesome-app.tabs')
                 abstract: true,
 
                 views: {
-                    'tabs':  {
+                    'tabs': {
                         templateUrl: 'tabs/tabs.tpl.html',
                         controller: 'TabsCtrl'
-                    },
-                    'teams':  {
-                        templateUrl: 'teams/teams.tpl.html',
-                        controller: 'TeamsCtrl'
                     }
                 }
 

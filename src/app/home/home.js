@@ -5,12 +5,11 @@ angular.module('awesome-app.home')
 
         $stateProvider
             .state('home', {
-                url: '/home',
+                abstract: true,
 
                 views: {
                     'tabs': {
-                        templateUrl: 'tabs/tabs.tpl.html',
-                        controller: 'TabsCtrl'
+                        template: '<div ui-view="tabs"></div>',
                     },
                     'teams': {
                         templateUrl: 'teams/teams.tpl.html',
