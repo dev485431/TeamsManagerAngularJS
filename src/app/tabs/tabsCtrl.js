@@ -22,9 +22,5 @@ controller('TabsCtrl', function ($scope, $state, StaffService) {
             tab.active = $scope.active(tab.route);
         });
     });
-
-    StaffService.getStaff().then(function(d) {
-        $scope.staffData = d;
-    });
-
+    
 });

@@ -6,7 +6,6 @@ angular.module('awesome-app.common.services')
             staffService = {
                 getStaff: function () {
                     var promise = $http.get(dataUrl).then(function (response) {
-                        console.log(response.data);
                         return response.data;
                     });
 
