@@ -1,10 +1,29 @@
-<div ng-repeat="staff in staffData">
-    Hash: {{staff.$$hashKey}}
-    Age: {{staff.age}}
-    Grade: {{staff.grade}}
-    Id: {{staff.id}}
-    Id: {{staff.job}}
-    Id: {{staff.name}}
-
-
+<div class="row">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Filter">
+    </div>
+    </br>
 </div>
+
+<div class="row">
+    <div class="col-xs-6 col-sm-3"><strong>Name</strong></div>
+    <div class="col-xs-6 col-sm-3"><strong>Job title</strong></div>
+    <div class="col-xs-6 col-sm-3"><strong>Age</strong></div>
+    <div class="col-xs-6 col-sm-3"><strong>Grade</strong></div>
+</div></br>
+
+<accordion>
+    <accordion-group ng-repeat="staff in staffData">
+        <accordion-heading>
+            <div class="row">
+                <div class="col-xs-6 col-sm-3">{{staff.name}}</div>
+                <div class="col-xs-6 col-sm-3">{{staff.job}}</div>
+                <div class="col-xs-6 col-sm-3">{{staff.age}}</div>
+                <div class="col-xs-6 col-sm-3">{{staff.grade}}</div>
+            </div>
+        </accordion-heading>
+
+        REVIEW
+
+    </accordion-group>
+</accordion>
