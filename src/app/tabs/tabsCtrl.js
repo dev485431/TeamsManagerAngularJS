@@ -2,7 +2,7 @@
 
 angular.module('awesome-app.tabs').
 
-controller('TabsCtrl', function ($scope, $state) {
+controller('TabsCtrl', function ($scope, $state, StaffService) {
 
     $scope.tabs = [
         { heading: "Search", route:"home.tabs.search", active:true },
@@ -21,6 +21,10 @@ controller('TabsCtrl', function ($scope, $state) {
         $scope.tabs.forEach(function(tab) {
             tab.active = $scope.active(tab.route);
         });
+    });
+
+    StaffService.getStaff().then(function(d) {
+        $scope.staffData = d;
     });
 
 });
