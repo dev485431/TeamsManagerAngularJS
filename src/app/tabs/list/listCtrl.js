@@ -3,16 +3,14 @@
 angular.module('awesome-app.tabs')
     .controller('ListCtrl', function ($scope, StaffService) {
 
+        $scope.sortType = 'name';
+        $scope.sortReverse = false;
+        $scope.searchTerm = '';
+
         $scope.currentPage = 1;
         $scope.itemsPerPage = 10;
         $scope.maxSize = 8;
         $scope.boundaryLinks = true;
-
-        $scope.sortType     = 'name';
-        $scope.sortReverse  = false;
-        $scope.searchTerm   = '';
-
-
 
         StaffService.getStaff()
             .then(function (data) {
@@ -29,7 +27,5 @@ angular.module('awesome-app.tabs')
         $scope.setPage = function (pageNo) {
             $scope.currentPage = pageNo;
         };
-
-
-
+        
     });

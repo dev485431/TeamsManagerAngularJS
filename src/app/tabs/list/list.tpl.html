@@ -1,10 +1,15 @@
 <div ng-controller="ListCtrl">
     <div class="row">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Filter">
-        </div>
-        </br>
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="pull-left glyphicon glyphicon glyphicon-search"></i></div>
+                    <input type="text" class="form-control" placeholder="Filter" ng-model="searchTerm">
+                </div>
+            </div>
+        </form>
     </div>
+
 
     <pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize"
                 boundary-links="boundaryLinks" ng-model="currentPage"></pagination>
@@ -43,7 +48,7 @@
     </br>
 
     <accordion>
-        <accordion-group ng-repeat="employee in pageData | orderBy:sortType:sortReverse">
+        <accordion-group ng-repeat="employee in pageData | orderBy:sortType:sortReverse | filter:searchTerm">
             <accordion-heading>
                 <div class="row">
                     <div class="col-xs-6 col-sm-3">{{employee.name}}</div>
