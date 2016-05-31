@@ -5,7 +5,7 @@ angular.module('awesome-app.tabs')
 
         $scope.currentPage = 1;
         $scope.itemsPerPage = 10;
-        $scope.maxSize = 8;
+        $scope.maxSize = 6;
         $scope.boundaryLinks = true;
 
         $scope.sortType = 'name';
