@@ -7,29 +7,53 @@
     </div>
 
     <pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize"
-                boundary-links="boundaryLinks" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+                boundary-links="boundaryLinks" ng-model="currentPage"></pagination>
 
 
     <div class="row">
-        <div class="col-xs-6 col-sm-3"><strong>Name</strong></div>
-        <div class="col-xs-6 col-sm-3"><strong>Job title</strong></div>
-        <div class="col-xs-6 col-sm-3"><strong>Age</strong></div>
-        <div class="col-xs-6 col-sm-3"><strong>Grade</strong></div>
+        <div class="col-xs-6 col-sm-3">
+        <a href ng-click="sortType = 'name'; sortReverse = !sortReverse">
+            Name
+            <span ng-show="sortType == 'name' && !sortReverse" class="pull-right glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'name' && sortReverse" class="pull-right glyphicon glyphicon-chevron-up"></span>
+        </a></div>
+
+        <div class="col-xs-6 col-sm-3">
+        <a href ng-click="sortType = 'job'; sortReverse = !sortReverse">
+            Job title
+            <span ng-show="sortType == 'job' && !sortReverse" class="pull-right glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'job' && sortReverse" class="pull-right glyphicon glyphicon-chevron-up"></span>
+        </a></div>
+
+        <div class="col-xs-6 col-sm-3">
+        <a href ng-click="sortType = 'age'; sortReverse = !sortReverse">
+            Age
+            <span ng-show="sortType == 'age' && !sortReverse" class="pull-right glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'age' && sortReverse" class="pull-right glyphicon glyphicon-chevron-up"></span>
+        </a></div>
+
+        <div class="col-xs-6 col-sm-3">
+        <a href ng-click="sortType = 'grade'; sortReverse = !sortReverse">
+            Grade
+            <span ng-show="sortType == 'grade' && !sortReverse" class="pull-right glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'grade' && sortReverse" class="pull-right glyphicon glyphicon-chevron-up"></span>
+        </a></div>
+
     </div>
     </br>
 
     <accordion>
-        <accordion-group ng-repeat="staff in paginatedStaff">
+        <accordion-group ng-repeat="employee in pageData | orderBy:sortType:sortReverse">
             <accordion-heading>
                 <div class="row">
-                    <div class="col-xs-6 col-sm-3">{{staff.name}}</div>
-                    <div class="col-xs-6 col-sm-3">{{staff.job}}</div>
-                    <div class="col-xs-6 col-sm-3">{{staff.age}}</div>
-                    <div class="col-xs-6 col-sm-3">{{staff.grade}}</div>
+                    <div class="col-xs-6 col-sm-3">{{employee.name}}</div>
+                    <div class="col-xs-6 col-sm-3">{{employee.job}}</div>
+                    <div class="col-xs-6 col-sm-3">{{employee.age}}</div>
+                    <div class="col-xs-6 col-sm-3">{{employee.grade}}</div>
                 </div>
             </accordion-heading>
 
-            REVIEW
+            Comments and reviews.
 
         </accordion-group>
     </accordion>
