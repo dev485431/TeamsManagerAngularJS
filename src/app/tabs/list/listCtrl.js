@@ -16,7 +16,7 @@ angular.module('awesome-app.tabs')
             .then(function (data) {
                 $scope.totalItems = data.length;
 
-                $scope.$watch('currentPage + searchTerm + sortReverse', function () {
+                $scope.$watch('currentPage + searchTerm + sortReverse + itemsPerPage', function () {
                     var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
                         end = begin + $scope.itemsPerPage;
 

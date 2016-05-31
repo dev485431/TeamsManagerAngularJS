@@ -11,8 +11,24 @@
     </div>
 
 
+
+
     <pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize"
                 boundary-links="boundaryLinks" ng-model="currentPage"></pagination>
+
+    <div class="dropdown pull-right">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Entries
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href ng-click="itemsPerPage = 10">10</a></li>
+            <li><a href ng-click="itemsPerPage = 20">20</a></li>
+            <li><a href ng-click="itemsPerPage = 30">30</a></li>
+            <li><a href ng-click="itemsPerPage = 40">40</a></li>
+            <li><a href ng-click="itemsPerPage = 50">50</a></li>
+        </ul>
+    </div>
 
 
     <div class="row">
