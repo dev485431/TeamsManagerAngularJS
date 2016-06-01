@@ -1,17 +1,20 @@
 <br ng-controller="TeamsCtrl">
 
-<form class="form-inline" ng-submit="addTeam()">
+<form name="addTeamForm" class="form-inline" ng-submit="addTeam(teamName, addTeamForm.$valid)" novalidate>
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Add new team">
-        <button type="submit" class="btn btn-default">+</button>
+        <input type="text" class="form-control" name="teamName" ng-model="teamName" ng-maxlength="29" ng-pattern="regexpAlphanum" required>
+        <button type="submit" class="btn btn-default" ng-disabled="addTeamForm.$invalid">+</button>
+
+        <p class="text-danger" ng-show="addTeamForm.teamName.$error.maxlength">* up to 29 characters</p>
+        <p class="text-danger" ng-show="addTeamForm.teamName.$error.pattern">* latin letters, numbers and spaces</p>
     </div>
 </form></br>
 
 <accordion close-others="oneAtATime">
 
-    <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
-        {{group.content}}
-        <div ng-repeat="item in items">{{item}}</div>
+    <accordion-group heading="{{team.name}}" ng-repeat="team in teams">
+        {{team.content}}
+        <div ng-repeat="member in members">{{item}}</div>
     </accordion-group>
 
 </accordion>

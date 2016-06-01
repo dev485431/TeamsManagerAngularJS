@@ -1,37 +1,23 @@
 'use strict';
 
-angular.module('awesome-app.teams').
+angular.module('awesome-app.teams')
+    .controller('TeamsCtrl', function ($scope) {
 
-controller('TeamsCtrl', function ($scope) {
+        $scope.oneAtATime = true;
+        $scope.teams = [];
+        $scope.members = [];
+        $scope.regexpAlphanum = /^[A-Za-z0-9 ]+$/;
 
-    $scope.oneAtATime = true;
+        $scope.addTeam = function (teamName, isFormValid) {
+            if (isFormValid) {
+                $scope.teams.push({
+                    name: teamName
+                });
+            }
+        };
 
-    $scope.groups = [
-        {
-            title: 'Dynamic Group Header - 1',
-            content: 'Dynamic Group Body - 1'
-        },
-        {
-            title: 'Dynamic Group Header - 2',
-            content: 'Dynamic Group Body - 2'
-        }
-    ];
+        $scope.addMember = function () {
+            $scope.members.push('Item');
+        };
 
-    $scope.items = ['Item 1', 'Item 2', 'Item 3'];
-
-    $scope.addItem = function() {
-        var newItemNo = $scope.items.length + 1;
-        $scope.items.push('Item ' + newItemNo);
-    };
-
-    $scope.addTeam = function() {
-        console.log('team added');
-    };
-
-    $scope.status = {
-        isFirstOpen: true,
-        isFirstDisabled: false
-    };
-
-
-});
+    });
