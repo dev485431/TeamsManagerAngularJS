@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.teams')
-    .controller('TeamsCtrl', function ($scope, TeamsService) {
+    .controller('TeamsCtrl', function ($scope, TeamsService, TeamMemberCollection) {
 
         $scope.oneAtATime = true;
         $scope.teams = TeamsService.getTeams();
@@ -11,9 +11,9 @@ angular.module('awesome-app.teams')
 
         $scope.addTeam = function (teamName, isFormValid) {
             if (isFormValid) {
-                $scope.teams.push({
-                    name: teamName
-                });
+                $scope.teams.push(
+                    new TeamMemberCollection(teamName)
+                );
             }
         };
 
