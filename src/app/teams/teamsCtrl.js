@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('awesome-app.teams')
-    .controller('TeamsCtrl', function ($scope) {
+    .controller('TeamsCtrl', function ($scope, TeamsService) {
 
         $scope.oneAtATime = true;
-        $scope.teams = [];
+        $scope.teams = TeamsService.getTeams();
+        console.log($scope.teams);
         $scope.members = [];
         $scope.regexpAlphanum = /^[A-Za-z0-9 ]+$/;
 
