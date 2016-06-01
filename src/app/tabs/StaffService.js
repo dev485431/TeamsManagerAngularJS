@@ -1,4 +1,6 @@
-angular.module('awesome-app.common.services')
+'use strict';
+
+angular.module('awesome-app.tabs')
     .factory('StaffService', function ($http) {
 
         var dataUrl = 'src/common/datasource/staff.json.js',

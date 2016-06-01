@@ -11,13 +11,12 @@
     </div>
 
 
-
-
     <pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize"
                 boundary-links="boundaryLinks" ng-model="currentPage"></pagination>
 
     <div class="dropdown pull-right">
-        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
             Entries
             <span class="caret"></span>
         </button>
@@ -33,32 +32,32 @@
 
     <div class="row">
         <div class="col-xs-6 col-sm-3">
-        <a href ng-click="sortType = 'name'; sortReverse = !sortReverse">
-            Name
-            <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-            <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
-        </a></div>
+            <a href ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                Name
+                <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            </a></div>
 
         <div class="col-xs-6 col-sm-3">
-        <a href ng-click="sortType = 'job'; sortReverse = !sortReverse">
-            Job title
-            <span ng-show="sortType == 'job' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-            <span ng-show="sortType == 'job' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
-        </a></div>
+            <a href ng-click="sortType = 'job'; sortReverse = !sortReverse">
+                Job title
+                <span ng-show="sortType == 'job' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortType == 'job' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            </a></div>
 
         <div class="col-xs-6 col-sm-3">
-        <a href ng-click="sortType = 'age'; sortReverse = !sortReverse">
-            Age
-            <span ng-show="sortType == 'age' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-            <span ng-show="sortType == 'age' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
-        </a></div>
+            <a href ng-click="sortType = 'age'; sortReverse = !sortReverse">
+                Age
+                <span ng-show="sortType == 'age' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortType == 'age' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            </a></div>
 
         <div class="col-xs-6 col-sm-3">
-        <a href ng-click="sortType = 'grade'; sortReverse = !sortReverse">
-            Grade
-            <span ng-show="sortType == 'grade' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-            <span ng-show="sortType == 'grade' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
-        </a></div>
+            <a href ng-click="sortType = 'grade'; sortReverse = !sortReverse">
+                Grade
+                <span ng-show="sortType == 'grade' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortType == 'grade' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            </a></div>
 
     </div>
     </br>
@@ -67,7 +66,8 @@
         <accordion-group ng-repeat="employee in pageData | orderBy:sortType:sortReverse | filter:searchTerm">
             <accordion-heading>
                 <div class="row">
-                    <div class="col-xs-6 col-sm-3">{{employee.name}}</div>
+                    <div class="col-xs-6 col-sm-3" tooltip="{{employee.grade}}, {{employee.job}}">{{employee.name}}
+                    </div>
                     <div class="col-xs-6 col-sm-3">{{employee.job}}</div>
                     <div class="col-xs-6 col-sm-3">{{employee.age}}</div>
                     <div class="col-xs-6 col-sm-3">{{employee.grade}}</div>
