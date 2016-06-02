@@ -14,6 +14,13 @@ factory('TeamMemberModel', function (AbstractEntity) {
             this._skills = [];
         },
         /**
+         * Get name
+         * @returns {String}
+         */
+        getName: function () {
+            return this.name;
+        },
+        /**
          * Add skill
          * @param {String} skill
          * @returns {TeamMemberModel}

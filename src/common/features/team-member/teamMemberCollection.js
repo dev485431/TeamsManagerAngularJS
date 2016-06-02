@@ -14,6 +14,13 @@ factory('TeamMemberCollection', function (AbstractEntity, TeamMemberModel) {
             this.models = [];
         },
         /**
+         * Get team name
+         * @returns {String}
+         */
+        getTeamName: function () {
+            return this.collectionName;
+        },
+        /**
          * Add member
          * @param {TeamMemberModel} member
          * @returns {TeamMemberCollection}

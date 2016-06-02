@@ -5,9 +5,8 @@ angular.module('awesome-app.teams')
 
         $scope.oneAtATime = true;
         $scope.teams = TeamsService.getTeams();
-        console.log($scope.teams);
-        $scope.members = [];
         $scope.regexpAlphanum = /^[A-Za-z0-9 ]+$/;
+        $scope.members = [];
 
         $scope.addTeam = function (teamName, isFormValid) {
             if (isFormValid) {
@@ -19,6 +18,11 @@ angular.module('awesome-app.teams')
 
         $scope.addMember = function () {
             $scope.members.push('Item');
+        };
+
+        $scope.setActiveTeam = function (group, i) {
+            console.log("Opened group with offset: "+ i);
+            $scope.activeAccordion = i;
         };
 
     });
