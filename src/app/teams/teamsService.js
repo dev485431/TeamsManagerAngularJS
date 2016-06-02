@@ -14,6 +14,7 @@ angular.module('awesome-app.teams')
             addTeam: function (collection) {
                 if (collection instanceof TeamMemberCollection) {
                     teams.push(collection);
+                    console.log('service');
                 }
             },
 
@@ -22,7 +23,7 @@ angular.module('awesome-app.teams')
             },
 
             teamNameExists: function (teamName) {
-                for (i = 0; i < teams.length; i++) {
+                for (var i = 0; i < teams.length; i++) {
                     if (teams[i].getTeamName() === teamName) {
                         return true;
                     }

@@ -2,11 +2,13 @@
 
 <form name="addTeamForm" class="form-inline" ng-submit="addTeam(teamName, addTeamForm.$valid)" novalidate>
     <div class="form-group">
-        <input type="text" class="form-control" name="teamName" ng-model="teamName" ng-maxlength="29" ng-pattern="regexpAlphanum" required>
+        <input type="text" class="form-control" name="teamName" ng-model="teamName" ng-maxlength="29"
+               ng-pattern="regexpAlphanum" uniquename required>
         <button type="submit" class="btn btn-default" ng-disabled="addTeamForm.$invalid">+</button>
 
         <p class="text-danger" ng-show="addTeamForm.teamName.$error.maxlength">* up to 29 characters</p>
         <p class="text-danger" ng-show="addTeamForm.teamName.$error.pattern">* latin letters, numbers and spaces</p>
+        <p class="text-danger" ng-show="addTeamForm.teamName.$error.uniquename">* such name already exists</p>
     </div>
 </form></br>
 
@@ -14,7 +16,8 @@
 
     <accordion-group heading="{{team.collectionName}}" ng-repeat="team in teams" ng-click="setActiveTeam(team, $index)">
         <div ng-repeat="member in team.models">{{member.name}}</div>
-    </accordion-group>{{activeAccordion}}
+    </accordion-group>
+    {{activeAccordion}}
 
 </accordion>
 
