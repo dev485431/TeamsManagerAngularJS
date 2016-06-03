@@ -30,9 +30,9 @@ angular.module('awesome-app.teams')
                 return false;
             },
 
-            addTeamMember: function (teamMember, teamId) {
+            addTeamMember: function (teamId, teamMember) {
                 if (teamMember instanceof TeamMemberModel) {
-                    teams[teamId].push(teamMember);
+                    teams[teamId].addMember(teamMember);
                 }
             }
 

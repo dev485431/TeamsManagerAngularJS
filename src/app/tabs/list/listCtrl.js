@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .controller('ListCtrl', function ($scope, $filter, StaffDataService, StaffService, TeamsService) {
+    .controller('ListCtrl', function ($scope, $filter, StaffDataService, StaffService, TeamsDataService, TeamsService) {
 
         $scope.currentPage = 1;
         $scope.itemsPerPage = 10;
@@ -33,12 +33,21 @@ angular.module('awesome-app.tabs')
             console.log("Selected employee id in service: " + StaffService.getSelectedEmployee());
         };
 
-        $scope.addTeamMemberButtonStatus = function () {
+        $scope.setTeamMemberButtonStatus = function () {
             var disabled = true;
             if (StaffService.getSelectedEmployee() !== undefined && TeamsService.getSelectedTeam() !== undefined) {
                 disabled = false;
             }
             return disabled;
+        };
+
+        $scope.addTeamMember = function (employeeId) {
+            console.log('Adding employee id: ' + employeeId);
+            // get employee object here by id
+            // console.log(StaffDataService.getEmployeeById(employeeId));
+            var addedTeamMember = StaffDataService.getEmployeeById(employeeId),
+                selectedTeam = TeamsService.getSelectedTeam();
+            TeamsDataService.addTeamMember(selectedTeam, addedTeamMember);
         };
 
     });

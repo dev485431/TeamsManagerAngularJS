@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('awesome-app.common.features.team-member').
-
-factory('TeamMemberModel', function (AbstractEntity) {
+angular.module('awesome-app.common.features.team-member').factory('TeamMemberModel', function (AbstractEntity) {
 
     var TeamMemberModel = AbstractEntity.extend({
         /**
@@ -12,6 +10,14 @@ factory('TeamMemberModel', function (AbstractEntity) {
         initialize: function (name) {
             this.name = name;
             this._skills = [];
+            this.id;
+        },
+        /**
+         * Get id
+         * @returns {Integer}
+         */
+        getId: function () {
+        return this.id;
         },
         /**
          * Get name
