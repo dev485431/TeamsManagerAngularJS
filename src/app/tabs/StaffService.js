@@ -1,20 +1,21 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .factory('StaffService', function ($http) {
+    .factory('StaffService', function () {
 
-        var dataUrl = 'src/common/datasource/staff.json.js',
+        var selectedEmployee;
 
-            staffService = {
-                getStaff: function () {
-                    var promise = $http.get(dataUrl)
-                        .then(function (response) {
-                            return response.data;
-                        });
+        var staffService = {
 
-                    return promise;
-                }
-            };
+            getSelectedEmployee: function () {
+                return selectedEmployee;
+            },
+
+            setSelectedEmployee: function (employeeId) {
+                selectedEmployee = employeeId;
+            }
+
+        };
         return staffService;
 
     });

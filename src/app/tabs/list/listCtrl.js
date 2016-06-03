@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .controller('ListCtrl', function ($scope, $filter, StaffService) {
+    .controller('ListCtrl', function ($scope, $filter, StaffDataService, StaffService) {
 
         $scope.currentPage = 1;
         $scope.itemsPerPage = 10;
@@ -12,7 +12,7 @@ angular.module('awesome-app.tabs')
         $scope.sortReverse = false;
         $scope.searchTerm = '';
 
-        StaffService.getStaff()
+        StaffDataService.getStaff()
             .then(function (data) {
                 $scope.totalItems = data.length;
 
@@ -27,5 +27,10 @@ angular.module('awesome-app.tabs')
                 });
 
             });
+
+        $scope.setSelectedEmployee = function (employeeId) {
+            StaffService.setSelectedEmployee(employeeId);
+            console.log("Selected employee id in service: " + StaffService.getSelectedEmployee());
+        };
 
     });

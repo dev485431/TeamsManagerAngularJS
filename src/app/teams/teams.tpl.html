@@ -14,10 +14,10 @@
 
 <accordion close-others="oneAtATime">
 
-    <accordion-group heading="{{team.collectionName}}" ng-repeat="team in teams" ng-click="setActiveTeam(team, $index)">
+    <accordion-group heading="{{team.collectionName}}" ng-repeat="team in teams" ng-click="setSelectedTeam($index)">
         <div ng-repeat="member in team.models">{{member.name}}</div>
     </accordion-group>
-    {{activeAccordion}}
+    {{selectedTeam}}
 
 </accordion>
 
