@@ -33,7 +33,7 @@ angular.module('awesome-app.tabs')
             console.log("Selected employee id in service: " + StaffService.getSelectedEmployee());
         };
 
-        $scope.setTeamMemberButtonStatus = function () {
+        $scope.setAddButtonStatus = function () {
             var disabled = true;
             if (StaffService.getSelectedEmployee() !== undefined && TeamsService.getSelectedTeam() !== undefined) {
                 disabled = false;

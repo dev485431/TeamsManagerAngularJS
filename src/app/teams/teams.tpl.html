@@ -16,10 +16,20 @@
 
 <accordion close-others="oneAtATime">
 
-    <accordion-group heading="{{team.collectionName}}" ng-repeat="team in teams" ng-click="setSelectedTeam($index)">
+    <accordion-group ng-repeat="team in teams">
+        <accordion-heading>
+            <div ng-click="setSelectedTeam($index)">
+                {{team.collectionName}}
+            </div>
+        </accordion-heading>
+
         <div ng-repeat="member in team.models">
-            <div tooltip="{{member.age}}, {{member.grade}}, {{member.job}}">{{member.name}}</div>
+            <div tooltip="{{member.age}}, {{member.grade}}, {{member.job}}">
+                {{member.name}}
+                <span class="glyphicon glyphicon-remove" ng-click="removeTeamMember(member.id)"></span>
+            </div>
         </div>
+
     </accordion-group>
 
 </accordion>
