@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .controller('ListCtrl', function ($scope, $filter, StaffDataService, StaffService) {
+    .controller('ListCtrl', function ($scope, $filter, StaffDataService, StaffService, TeamsService) {
 
         $scope.currentPage = 1;
         $scope.itemsPerPage = 10;
@@ -31,6 +31,14 @@ angular.module('awesome-app.tabs')
         $scope.setSelectedEmployee = function (employeeId) {
             StaffService.setSelectedEmployee(employeeId);
             console.log("Selected employee id in service: " + StaffService.getSelectedEmployee());
+        };
+
+        $scope.addTeamMemberButtonStatus = function () {
+            var disabled = true;
+            if (StaffService.getSelectedEmployee() !== undefined && TeamsService.getSelectedTeam() !== undefined) {
+                disabled = false;
+            }
+            return disabled;
         };
 
     });
