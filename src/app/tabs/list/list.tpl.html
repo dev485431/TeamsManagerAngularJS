@@ -63,10 +63,9 @@
     </br>
 
     <accordion>
-        <accordion-group ng-repeat="employee in pageData | orderBy:sortType:sortReverse | filter:searchTerm"
-                         ng-click="setSelectedEmployee(employee.id)">
+        <accordion-group ng-repeat="employee in pageData | orderBy:sortType:sortReverse | filter:searchTerm">
             <accordion-heading>
-                <div class="row">
+                <div class="row" ng-click="setSelectedEmployee(employee.id)">
                     <div class="col-xs-6 col-sm-4" tooltip="{{employee.grade}}, {{employee.job}}">{{employee.name}}
                     </div>
                     <div class="col-xs-6 col-sm-4">{{employee.job}}</div>
