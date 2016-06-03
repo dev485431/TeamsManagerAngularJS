@@ -20,4 +20,8 @@ angular.module('awesome-app.teams')
 
         };
 
+        $scope.removeTeamMember = function(memberId) {
+            console.log('Removing: ' + memberId);
+        };
+
     });
