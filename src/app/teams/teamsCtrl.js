@@ -11,6 +11,7 @@ angular.module('awesome-app.teams')
         $scope.addTeam = function (teamName, isFormValid) {
             if (isFormValid) {
                 TeamsService.addTeam(new TeamMemberCollection(teamName));
+                $scope.teamName = null;
             }
         };
 

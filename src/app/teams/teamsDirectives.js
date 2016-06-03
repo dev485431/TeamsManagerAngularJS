@@ -5,12 +5,14 @@ angular.module('awesome-app.teams')
         return {
             require: 'ngModel',
             link: function (scope, elm, attrs, ctrl) {
-                ctrl.$validators.uniqueName = function (viewValue) {
-                    if (TeamsService.teamNameExists(viewValue)) {
-                        return false;
+                scope.$watch(function () {
+                    if (TeamsService.teamNameExists(ctrl.$viewValue)) {
+                        ctrl.$setValidity('uniquename', false);
+                    } else {
+                        ctrl.$setValidity('uniquename', true);
                     }
-                    return true;
-                };
+                });
+
             }
         };
     });
