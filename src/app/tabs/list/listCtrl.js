@@ -42,12 +42,9 @@ angular.module('awesome-app.tabs')
         };
 
         $scope.addTeamMember = function (employeeId) {
-            console.log('Adding employee id: ' + employeeId);
-            // get employee object here by id
-            // console.log(StaffDataService.getEmployeeById(employeeId));
-            var addedTeamMember = StaffDataService.getEmployeeById(employeeId),
+            var employee = StaffDataService.getEmployeeById(employeeId),
                 selectedTeam = TeamsService.getSelectedTeam();
-            TeamsDataService.addTeamMember(selectedTeam, addedTeamMember);
+            TeamsDataService.addTeamMember(selectedTeam, employee);
         };
 
     });

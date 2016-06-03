@@ -17,7 +17,9 @@
 <accordion close-others="oneAtATime">
 
     <accordion-group heading="{{team.collectionName}}" ng-repeat="team in teams" ng-click="setSelectedTeam($index)">
-        <div ng-repeat="member in team.models">{{member.name}}</div>
+        <div ng-repeat="member in team.models">
+            <div tooltip="{{member.age}}, {{member.grade}}, {{member.job}}">{{member.name}}</div>
+        </div>
     </accordion-group>
 
 </accordion>
