@@ -44,6 +44,7 @@ angular.module('awesome-app.tabs')
         $scope.addTeamMember = function (employeeId) {
             var employee = StaffDataService.getEmployeeById(employeeId),
                 selectedTeam = TeamsService.getSelectedTeam();
+            console.log(employee);
             TeamsDataService.addTeamMember(selectedTeam, employee);
         };
 

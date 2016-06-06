@@ -7,17 +7,19 @@ angular.module('awesome-app.common.features.team-member').factory('TeamMemberMod
          * Initialize object
          * @param {String} name
          */
-        initialize: function (name) {
-            this.name = name;
-            this._skills = [];
+        initialize: function (id, name, age, grade, job) {
             this.id;
+            this.name = name;
+            this.age = age;
+            this.grade = grade;
+            this.job = job;
         },
         /**
          * Get id
          * @returns {Integer}
          */
         getId: function () {
-        return this.id;
+            return this.id;
         },
         /**
          * Get name
@@ -25,35 +27,6 @@ angular.module('awesome-app.common.features.team-member').factory('TeamMemberMod
          */
         getName: function () {
             return this.name;
-        },
-        /**
-         * Add skill
-         * @param {String} skill
-         * @returns {TeamMemberModel}
-         */
-        addSkill: function (skill) {
-            if (this._skills.indexOf(skill) === -1) {
-                this._skills.push(skill);
-            }
-            return this;
-        },
-        /**
-         * Add skills
-         * @param {Array.<String>} skills
-         * @returns {TeamMemberModel}
-         */
-        addSkills: function (skills) {
-            skills.forEach(function (skill) {
-                this.addSkill(skill);
-            }, this);
-            return this;
-        },
-        /**
-         * Get skills
-         * @returns {Array.<String>}
-         */
-        getSkills: function () {
-            return this._skills.slice();
         }
     });
 
