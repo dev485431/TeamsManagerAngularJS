@@ -24,11 +24,11 @@
         </accordion-heading>
 
         <div class="pull-right">
-            <button class="btn btn-default btn-xs" tooltip="Remove team" ng-click="removeTeam()">
+            <button class="btn btn-default btn-xs" ng-click="removeTeam()">
                 <span class="glyphicon glyphicon-minus"></span>
             </button>
         </div>
-        <div class="pull-left" ng-repeat="member in team.models">
+        <div ng-repeat="member in team.models">
             <div tooltip="{{member.age}}, {{member.grade}}, {{member.job}}">
                 {{member.name}}
                 <span class="glyphicon glyphicon-remove" ng-click="removeTeamMember(member.id)"></span>

@@ -30,7 +30,7 @@ angular.module('awesome-app.tabs')
 
         $scope.setSelectedEmployee = function (employeeId) {
             StaffService.setSelectedEmployee(employeeId);
-            console.log("Selected employee id in service: " + StaffService.getSelectedEmployee());
+            // console.log("Selected employee id in service: " + StaffService.getSelectedEmployee());
         };
 
         $scope.setAddButtonStatus = function () {

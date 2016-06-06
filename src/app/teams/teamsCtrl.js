@@ -17,6 +17,7 @@ angular.module('awesome-app.teams')
         $scope.removeTeam = function () {
             var selectedTeamId = TeamsService.getSelectedTeam();
             TeamsDataService.removeTeam(selectedTeamId);
+            TeamsService.setSelectedTeam(undefined);
         };
 
         $scope.setSelectedTeam = function (index) {
