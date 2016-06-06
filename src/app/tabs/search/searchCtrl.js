@@ -3,7 +3,7 @@
 angular.module('awesome-app.tabs')
     .controller('SearchCtrl', function ($scope, $filter, StaffDataService) {
 
-        $scope.numbers = [1, 2, 3, 5, 6];
+        $scope.typeheadSort = 'name';
 
         $scope.addTag = function (item) {
             console.log('Adding tag: ' + item);
@@ -20,6 +20,7 @@ angular.module('awesome-app.tabs')
             for (var i = 0; i < searchWordsArray.length; i++) {
                 results = $filter('filter')(results, searchWordsArray[i]);
             }
+            results = $filter('orderBy')(results, $scope.typeheadSort);
             return results;
         };
 

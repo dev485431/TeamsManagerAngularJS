@@ -3,7 +3,18 @@
         <form>
             <div class="form-group">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search by name, job, age or grade"
+                    <div class="radio">
+                        Sort typehead by:
+                        <label><input type="radio" value="name" ng-model="typeheadSort" checked="checked">name</label>
+                        <label><input type="radio" value="age" ng-model="typeheadSort">age</label>
+                        <label><input type="radio" value="job" ng-model="typeheadSort">job</label>
+                        <label><input type="radio" value="grade" ng-model="typeheadSort">grade</label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" maxlength="50" class="form-control"
+                           placeholder="Search by name, job, age or grade"
                            ng-model="searchTerm" typeahead-on-select="addTag($item)"
                            typeahead="employee as employee.name + ' , ' + employee.age + ' , ' + employee.job + ' , ' + employee.grade for employee in matchAnyWords($viewValue)"
                            typeahead-editable="false">
@@ -11,6 +22,7 @@
                     <button class="btn btn-default" type="button" tooltip="Add to team">Refresh</button>
                 </span>
                 </div>
+                * type in more space-separated words to get more detailed results
             </div>
         </form>
     </div>
