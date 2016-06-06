@@ -2,13 +2,13 @@
 
 <form name="addTeamForm" class="form-inline" ng-submit="addTeam(teamName, addTeamForm.$valid)" novalidate>
     <div class="form-group">
-        <p class="text-danger" ng-show="addTeamForm.teamName.$error.maxlength">* can be not longer than 29
+        <p class="text-danger" ng-show="addTeamForm.teamName.$error.maxlength">* can be not longer than 40
             characters</p>
         <p class="text-danger" ng-show="addTeamForm.teamName.$error.pattern">* use only latin letters, numbers and
             spaces</p>
         <p class="text-danger" ng-show="addTeamForm.teamName.$error.uniquename">* this team name is taken</p>
 
-        <input type="text" class="form-control" name="teamName" ng-model="teamName" ng-maxlength="29"
+        <input type="text" class="form-control" name="teamName" ng-model="teamName" ng-maxlength="40"
                ng-pattern="regexpAlphanum" uniquename required>
         <button type="submit" class="btn btn-default" ng-disabled="addTeamForm.$invalid">+</button>
     </div>
@@ -23,7 +23,12 @@
             </div>
         </accordion-heading>
 
-        <div ng-repeat="member in team.models">
+        <div class="pull-right">
+            <button class="btn btn-default btn-xs" ng-click="removeTeam()">
+                <span class="glyphicon glyphicon-minus" tooltip="Remove team"></span>
+            </button>
+        </div>
+        <div class="pull-left" ng-repeat="member in team.models">
             <div tooltip="{{member.age}}, {{member.grade}}, {{member.job}}">
                 {{member.name}}
                 <span class="glyphicon glyphicon-remove" ng-click="removeTeamMember(member.id)"></span>

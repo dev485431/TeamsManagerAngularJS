@@ -14,10 +14,14 @@ angular.module('awesome-app.teams')
             }
         };
 
+        $scope.removeTeam = function () {
+            var selectedTeamId = TeamsService.getSelectedTeam();
+            TeamsDataService.removeTeam(selectedTeamId);
+        };
+
         $scope.setSelectedTeam = function (index) {
             TeamsService.setSelectedTeam(index);
             console.log("Selected team in service: " + TeamsService.getSelectedTeam());
-
         };
 
         $scope.removeTeamMember = function (memberId) {
