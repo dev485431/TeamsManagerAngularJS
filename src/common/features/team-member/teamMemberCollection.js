@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('awesome-app.common.features.team-member').
-
-factory('TeamMemberCollection', function (AbstractEntity, TeamMemberModel) {
+angular.module('awesome-app.common.features.team-member').factory('TeamMemberCollection', function (AbstractEntity, TeamMemberModel) {
 
     var TeamMemberCollection = AbstractEntity.extend({
         /**
@@ -28,6 +26,20 @@ factory('TeamMemberCollection', function (AbstractEntity, TeamMemberModel) {
         addMember: function (member) {
             if (member instanceof TeamMemberModel) {
                 this.models.push(member);
+            }
+            return this;
+        },
+        /**
+         * Remove member
+         * @param {Int} memberId
+         * @returns {TeamMemberCollection}
+         */
+        removeMember: function (memberId) {
+            for (var i = 0; i < this.models.length; i++) {
+                if (this.models[i].getId() === memberId) {
+                    this.models.splice(i, 1);
+                    break;
+                }
             }
             return this;
         }

@@ -8,7 +8,7 @@ angular.module('awesome-app.common.features.team-member').factory('TeamMemberMod
          * @param {String} name
          */
         initialize: function (id, name, age, grade, job) {
-            this.id;
+            this.id = id;
             this.name = name;
             this.age = age;
             this.grade = grade;

@@ -34,6 +34,10 @@ angular.module('awesome-app.teams')
                 if (teamMember instanceof TeamMemberModel) {
                     teams[teamId].addMember(teamMember);
                 }
+            },
+
+            removeTeamMember: function (teamId, memberId) {
+                teams[teamId].removeMember(memberId);
             }
 
         };
