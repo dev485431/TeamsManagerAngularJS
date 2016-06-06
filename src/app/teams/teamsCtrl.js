@@ -22,14 +22,13 @@ angular.module('awesome-app.teams')
 
         $scope.setSelectedTeam = function (index) {
             TeamsService.setSelectedTeam(index);
-            console.log("Selected team in service: " + TeamsService.getSelectedTeam());
+            // console.log("Selected team in service: " + TeamsService.getSelectedTeam());
         };
 
         $scope.removeTeamMember = function (memberId) {
             console.log('Removing: ' + memberId);
             var selectedTeamId = TeamsService.getSelectedTeam();
             TeamsDataService.removeTeamMember(selectedTeamId, memberId);
-
         };
 
     });

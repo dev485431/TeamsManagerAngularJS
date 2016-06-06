@@ -38,9 +38,19 @@ angular.module('awesome-app.teams')
 
             removeTeamMember: function (teamId, memberId) {
                 teams[teamId].removeMember(memberId);
-            }
+            },
 
+            isAlreadyTeamMember: function (teamId, memberId) {
+                var teamMembers = teams[teamId].getMembers();
+                for (var i = 0; i < teamMembers.length; i++) {
+                    if (teamMembers[i].getId() === memberId) {
+                        return true;
+                    }
+                }
+                return false;
+            }
         };
+
         return teamsDataService;
 
     });

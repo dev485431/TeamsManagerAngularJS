@@ -34,9 +34,14 @@ angular.module('awesome-app.tabs')
         };
 
         $scope.setAddButtonStatus = function () {
-            var disabled = true;
-            if (StaffService.getSelectedEmployee() !== undefined && TeamsService.getSelectedTeam() !== undefined) {
-                disabled = false;
+            var disabled = true,
+                currentTeam = TeamsService.getSelectedTeam(),
+                currentEmployee = StaffService.getSelectedEmployee();
+
+            if (currentEmployee !== undefined && currentTeam !== undefined) {
+                if (!TeamsDataService.isAlreadyTeamMember(currentTeam, currentEmployee)) {
+                    disabled = false;
+                }
             }
             return disabled;
         };
@@ -44,7 +49,7 @@ angular.module('awesome-app.tabs')
         $scope.addTeamMember = function (employeeId) {
             var employee = StaffDataService.getEmployeeById(employeeId),
                 selectedTeamId = TeamsService.getSelectedTeam();
-            console.log(employee);
+            // console.log(employee);
             TeamsDataService.addTeamMember(selectedTeamId, employee);
         };
 

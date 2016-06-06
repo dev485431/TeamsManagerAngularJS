@@ -19,6 +19,13 @@ angular.module('awesome-app.common.features.team-member').factory('TeamMemberCol
             return this.collectionName;
         },
         /**
+         * Get members
+         * @returns {Array}
+         */
+        getMembers: function () {
+            return this.models;
+        },
+        /**
          * Add member
          * @param {TeamMemberModel} member
          * @returns {TeamMemberCollection}
