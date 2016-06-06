@@ -1,13 +1,17 @@
-<div class="row">
-    <form>
-        <div class="form-group">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search by name, job, age or grade"
-                       ng-model="searchTerm">
+<div ng-controller="SearchCtrl">
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search by name, job, age or grade"
+                           ng-model="searchTerm" typeahead-on-select="addTag($item)"
+                           typeahead="employee as employee.name + ' , ' + employee.age + ' , ' + employee.job + ' , ' + employee.grade for employee in matchAnyWords($viewValue)"
+                           typeahead-editable="false">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" tooltip="Add to team">Add</button>
+                    <button class="btn btn-default" type="button" tooltip="Add to team">Refresh</button>
                 </span>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
