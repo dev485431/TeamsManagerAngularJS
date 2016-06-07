@@ -21,5 +21,5 @@ angular.module('awesome-app.tabs')
                 tab.active = $scope.active(tab.route);
             });
         });
-        
+
     });

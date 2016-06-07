@@ -14,7 +14,7 @@ angular.module('awesome-app.tabs')
 
         StaffDataService.getStaff()
             .then(function (data) {
-                paginateData(data);
+                processData(data);
             });
 
         $scope.setSelectedEmployee = function (employeeId) {
@@ -40,7 +40,7 @@ angular.module('awesome-app.tabs')
             TeamsDataService.addTeamMember(selectedTeamId, employee);
         };
 
-        var paginateData = function (data) {
+        var processData = function (data) {
             $scope.totalItems = data.length;
 
             $scope.$watch('currentPage + searchTerm + sortReverse + itemsPerPage', function () {
