@@ -13,6 +13,6 @@ angular.module('awesome-app.tabs')
                         controller: 'TabsCtrl'
                     }
                 }
-
+                
             });
     });
