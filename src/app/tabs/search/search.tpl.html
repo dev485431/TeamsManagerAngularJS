@@ -11,28 +11,47 @@
                         <label><input type="radio" value="job" ng-model="typeheadSortType">job</label>
                         <label><input type="radio" value="grade" ng-model="typeheadSortType">grade</label>
                     </div>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" tooltip="Add to team">Refresh</button>
+                    </span>
                 </div>
 
-                <div class="input-group">
-                    <input type="text" maxlength="50" class="form-control"
-                           placeholder="Search by name, job, age or grade"
-                           ng-model="searchTerm" typeahead-on-select="addTag($item)"
-                           typeahead="employee as employee.name + ' , ' + employee.age + ' , ' + employee.job + ' , ' + employee.grade for employee in matchAnyWords($viewValue)"
-                           typeahead-editable="false">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" tooltip="Add to team">Refresh</button>
-                </span>
-                </div>
-                * type in more space-separated words to get more detailed results
-            </div>
-
-            <div class="form-group">
-                <div class="input-group">
-                    <tags-input ng-model="tags">
-                        <auto-complete source="loadTags($query)"></auto-complete>
+                <div class="input-group-lg">
+                    <tags-input ng-model="tags"
+                                placeholder="Search by name, job, age or grade"
+                                replace-spaces-with-dashes="false"
+                                add-from-autocomplete-only="true"
+                                display-property="name"
+                                key-property="id"
+                                max-tags="8"
+                                template="tagsTemplate">
+                        <auto-complete source="matchAnyWords($query)"
+                                       min-length="0"
+                                       max-results-to-show="-1"
+                                       highlight-matched-text="false"
+                                       debounce-delay="200"
+                                       template="autocompleteTemplate">
+                        </auto-complete>
                     </tags-input>
                 </div>
+                {{tags}}
             </div>
         </form>
     </div>
 </div>
+
+<!-- Tags and Autocomplete custom templates -->
+<script type="text/ng-template" id="tagsTemplate">
+    <div>
+        <div tooltip="{{data.age}}, {{data.job}}, {{data.grade}}">
+            <span>{{data.name}}</span>
+            <a class="remove-button" ng-click="$removeTag()">&#10006;</a>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="autocompleteTemplate">
+    <div>
+        <span>{{data.name}}, {{data.age}}, {{data.job}}, {{data.grade}}</span>
+    </div>
+</script>
