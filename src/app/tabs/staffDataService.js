@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .factory('StaffDataService', function ($http, TeamMemberModel) {
+    .factory('StaffDataService', function ($http, $q, TeamMemberModel) {
 
         var dataUrl = 'src/common/datasource/staff.json.js',
             loadErrMsg = 'Error while loading data',
