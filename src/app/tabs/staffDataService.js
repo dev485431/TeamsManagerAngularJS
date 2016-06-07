@@ -4,17 +4,26 @@ angular.module('awesome-app.tabs')
     .factory('StaffDataService', function ($http, TeamMemberModel) {
 
         var dataUrl = 'src/common/datasource/staff.json.js',
+            loadErrMsg = 'Error while loading data',
             rawStaffData,
             staffMapById;
 
         var staffService = {
             getStaff: function () {
-                var promise = $http.get(dataUrl)
-                    .then(function (response) {
-                        rawStaffData = response.data;
-                        return response.data;
-                    });
-                return promise;
+                var def = $q.defer();
+                if (rawStaffData) {
+                    def.resolve(rawStaffData);
+                } else {
+                    $http.get(dataUrl)
+                        .success(function (data) {
+                            rawStaffData = data;
+                            def.resolve(data);
+                        })
+                        .error(function () {
+                            def.reject(loadErrMsg);
+                        });
+                }
+                return def.promise;
             },
 
             getEmployeeById: function (employeeId) {
