@@ -37,11 +37,14 @@ module.exports = function(grunt) {
                     '<%=bowerDir%>/angular-sanitize/angular-sanitize.js',
                     '<%=bowerDir%>/bootstrap/dist/js/bootstrap.js',
                     '<%=bowerDir%>/angular-ui-router/release/angular-ui-router.js',
-                    '<%=bowerDir%>/angular-bootstrap/ui-bootstrap-tpls.js'
+                    '<%=bowerDir%>/angular-bootstrap/ui-bootstrap-tpls.js',
+                    '<%=bowerDir%>/ng-tags-input/ng-tags-input.js'
+
                 ],
                 css: [
                     '<%=bowerDir%>/angular/angular-csp.css',
-                    '<%=bowerDir%>/bootstrap/dist/css/bootstrap.min.css'
+                    '<%=bowerDir%>/bootstrap/dist/css/bootstrap.min.css',
+                    '<%=bowerDir%>/ng-tags-input/ng-tags-input.min.css'
                 ],
                 less: [
                 ],

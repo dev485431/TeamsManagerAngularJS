@@ -3,10 +3,26 @@
 angular.module('awesome-app.tabs')
     .controller('SearchCtrl', function ($scope, $filter, StaffDataService) {
 
-        $scope.typeheadSort = 'name';
+        $scope.typeheadSortType = 'name';
 
         $scope.addTag = function (item) {
-            console.log('Adding tag: ' + item);
+            console.log(item);
+        };
+
+        $scope.tags = [
+            {text: 'just'},
+            {text: 'some'},
+            {text: 'cool'},
+            {text: 'tags'}
+        ];
+
+        $scope.loadTags = function(query) {
+            return [
+                {text: 'just'},
+                {text: 'some'},
+                {text: 'cool'},
+                {text: 'tags'}
+            ];
         };
 
         StaffDataService.getStaff()
@@ -20,7 +36,7 @@ angular.module('awesome-app.tabs')
             for (var i = 0; i < searchWordsArray.length; i++) {
                 results = $filter('filter')(results, searchWordsArray[i]);
             }
-            results = $filter('orderBy')(results, $scope.typeheadSort);
+            results = $filter('orderBy')(results, $scope.typeheadSortType);
             return results;
         };
 

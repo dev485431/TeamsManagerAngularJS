@@ -4,6 +4,7 @@ angular.module('awesome-app', [
     'ui.router',
     'ui.bootstrap',
     'ngSanitize',
+    'ngTagsInput',
     'templates-app',
     'awesome-app.common',
     'awesome-app.home',
