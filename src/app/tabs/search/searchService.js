@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .factory('SearchService', function (TeamMemberModel) {
+    .factory('SearchService', function (TeamMemberModel, TeamsService, TeamsDataService) {
 
         var tagsObjects = [];
 
@@ -24,6 +24,20 @@ angular.module('awesome-app.tabs')
                         break;
                     }
                 }
+            },
+
+            addToTeam: function (tagObjects) {
+                for (var i = 0; i < tagObjects.length; i++) {
+                    var currentTagObject = tagObjects[i],
+                        currentTagObjectId = currentTagObject.id,
+                        selectedTeamId = TeamsService.getSelectedTeam();
+
+                    if (!TeamsDataService.isAlreadyTeamMember(selectedTeamId, currentTagObjectId)) {
+                        var addedEmployee = new TeamMemberModel(currentTagObject.id, currentTagObject.name, currentTagObject.age, currentTagObject.grade, currentTagObject.job);
+                        TeamsDataService.addTeamMember(selectedTeamId, addedEmployee);
+                    }
+                }
+                tagsObjects = [];
             }
 
         };

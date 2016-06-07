@@ -19,6 +19,11 @@ angular.module('awesome-app.tabs')
             SearchService.removeTagObject(tagObject.id);
         };
 
+        $scope.addToTeam = function () {
+            SearchService.addToTeam($scope.tags);
+            $scope.tags = SearchService.getTagsObjects();
+        };
+
         $scope.setRefreshButtonStatus = function () {
             var disabled = true,
                 currentTeam = TeamsService.getSelectedTeam(),
