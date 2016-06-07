@@ -1,15 +1,34 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .controller('SearchCtrl', function ($scope, $filter, StaffDataService) {
+    .controller('SearchCtrl', function ($scope, $filter, StaffDataService, TeamsService, SearchService) {
 
         $scope.typeheadSortType = 'name';
-        $scope.tags = [];
+        $scope.tags = SearchService.getTagsObjects();
 
         StaffDataService.getStaff()
             .then(function (data) {
                 $scope.staffData = data;
             });
+
+        $scope.addTag = function (tagObject) {
+            SearchService.addTagObject(tagObject);
+        };
+
+        $scope.removeTag = function (tagObject) {
+            SearchService.removeTagObject(tagObject.id);
+        };
+
+        $scope.setRefreshButtonStatus = function () {
+            var disabled = true,
+                currentTeam = TeamsService.getSelectedTeam(),
+                currentTags = SearchService.getTagsObjects();
+
+            if (currentTags.length > 0 && currentTeam !== undefined) {
+                disabled = false;
+            }
+            return disabled;
+        };
 
         $scope.matchAnyWords = function (searchText) {
             var results = $scope.staffData;

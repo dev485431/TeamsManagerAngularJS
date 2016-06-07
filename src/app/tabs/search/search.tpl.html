@@ -12,7 +12,8 @@
                         <label><input type="radio" value="grade" ng-model="typeheadSortType">grade</label>
                     </div>
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" tooltip="Add to team">Refresh</button>
+                        <button class="btn btn-default" type="button" tooltip="Add to team"
+                                ng-disabled="setRefreshButtonStatus()">Refresh</button>
                     </span>
                 </div>
 
@@ -24,7 +25,9 @@
                                 display-property="name"
                                 key-property="id"
                                 max-tags="8"
-                                template="tagsTemplate">
+                                template="tagsTemplate"
+                                on-tag-added="addTag($tag)"
+                                on-tag-removed="removeTag($tag)">
                         <auto-complete source="matchAnyWords($query)"
                                        min-length="0"
                                        max-results-to-show="-1"
