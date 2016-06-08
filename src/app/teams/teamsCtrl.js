@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.teams')
-    .controller('TeamsCtrl', function ($scope, TeamMemberCollection, TeamsDataService, TeamsService, SearchService) {
+    .controller('TeamsCtrl', function ($scope, TeamsDataService, SearchService, TeamsService, TeamMemberCollection) {
 
         $scope.oneAtATime = true;
         $scope.teams = TeamsDataService.getTeams();

@@ -19,8 +19,8 @@ angular.module('awesome-app.tabs')
             SearchService.removeTagObject(tagObject.id);
         };
 
-        $scope.refresh = function () {
-            SearchService.refresh($scope.tags);
+        $scope.addToTeam = function () {
+            SearchService.addToTeam($scope.tags);
         };
 
         $scope.setRefreshButtonStatus = function () {
