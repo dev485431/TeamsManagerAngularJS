@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.teams')
-    .controller('TeamsCtrl', function ($scope, TeamsDataService, TeamsService, TeamMemberCollection) {
+    .controller('TeamsCtrl', function ($scope, TeamMemberCollection, TeamsDataService, TeamsService, SearchService) {
 
         $scope.oneAtATime = true;
         $scope.teams = TeamsDataService.getTeams();
@@ -29,6 +29,7 @@ angular.module('awesome-app.teams')
             console.log('Removing: ' + memberId);
             var selectedTeamId = TeamsService.getSelectedTeam();
             TeamsDataService.removeTeamMember(selectedTeamId, memberId);
+            SearchService.removeTagObject(memberId);
         };
 
     });

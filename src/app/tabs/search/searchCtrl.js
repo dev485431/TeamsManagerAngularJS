@@ -21,7 +21,6 @@ angular.module('awesome-app.tabs')
 
         $scope.addToTeam = function () {
             SearchService.addToTeam($scope.tags);
-            $scope.tags = SearchService.getTagsObjects();
         };
 
         $scope.setRefreshButtonStatus = function () {
