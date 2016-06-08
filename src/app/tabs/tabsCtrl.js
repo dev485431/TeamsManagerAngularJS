@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .controller('TabsCtrl', function ($scope, $state, StaffDataService) {
+    .controller('TabsCtrl', function ($scope, $state) {
 
         $scope.tabs = [
             {heading: "Search", route: "home.tabs.search", active: true},
