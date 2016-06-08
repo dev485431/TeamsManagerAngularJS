@@ -37,7 +37,6 @@ angular.module('awesome-app.tabs')
                         TeamsDataService.addTeamMember(selectedTeamId, addedEmployee);
                     }
                 }
-                tagsObjects = [];
             }
 
         };
