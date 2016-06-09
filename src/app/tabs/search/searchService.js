@@ -10,7 +10,9 @@ angular.module('awesome-app.tabs')
             getTagsObjects: function () {
                 if (TeamsService.getSelectedTeam() !== undefined) {
                     var selectedTeamMembers = TeamsDataService.getTeamMembers(TeamsService.getSelectedTeam());
-                    tagsObjects = selectedTeamMembers.slice(0);
+                    if (selectedTeamMembers.length > 0) {
+                        tagsObjects = selectedTeamMembers.slice(0);
+                    }
                 }
                 return tagsObjects;
             },
