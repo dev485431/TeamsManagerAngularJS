@@ -8,6 +8,10 @@ angular.module('awesome-app.tabs')
         var searchService = {
 
             getTagsObjects: function () {
+                if (TeamsService.getSelectedTeam() !== undefined) {
+                    var selectedTeamMembers = TeamsDataService.getTeamMembers(TeamsService.getSelectedTeam());
+                    tagsObjects = selectedTeamMembers.slice(0);
+                }
                 return tagsObjects;
             },
 
@@ -21,6 +25,7 @@ angular.module('awesome-app.tabs')
                 for (var i = 0; i < tagsObjects.length; i++) {
                     if (tagsObjects[i].id === tagObjectId) {
                         tagsObjects.splice(i, 1);
+                        console.log(tagsObjects);
                         break;
                     }
                 }

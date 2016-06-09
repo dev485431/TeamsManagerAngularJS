@@ -13,7 +13,7 @@
                     </div>
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button"
-                                ng-disabled="setRefreshButtonStatus()" ng-click="addToTeam()">Refresh</button>
+                                ng-disabled="setRefreshButtonStatus()" ng-click="refresh()">Refresh</button>
                     </span>
                 </div>
 
@@ -24,7 +24,6 @@
                                 add-from-autocomplete-only="true"
                                 display-property="name"
                                 key-property="id"
-                                max-tags="8"
                                 template="tagsTemplate"
                                 on-tag-added="addTag($tag)"
                                 on-tag-removed="removeTag($tag)">
@@ -36,6 +35,7 @@
                                        template="autocompleteTemplate">
                         </auto-complete>
                     </tags-input>
+                    {{tags}}
                 </div>
             </div>
         </form>

@@ -1,15 +1,23 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .controller('SearchCtrl', function ($scope, $filter, StaffDataService, TeamsService, SearchService) {
+    .controller('SearchCtrl', function ($scope, $filter, StaffDataService, TeamsService, SearchService, TeamsDataService) {
 
         $scope.typeheadSortType = 'name';
-        $scope.tags = SearchService.getTagsObjects();
+        $scope.tags = [];
 
         StaffDataService.getStaff()
             .then(function (data) {
                 $scope.staffData = data;
             });
+
+        $scope.$watch(function() { return getSelectedTeamState(); }, function () {
+            $scope.tags = SearchService.getTagsObjects();
+        });
+
+        $scope.$watchCollection(function () { return getTeamMembersState(); }, function () {
+            $scope.tags = SearchService.getTagsObjects();
+        });
 
         $scope.addTag = function (tagObject) {
             SearchService.addTagObject(tagObject);
@@ -19,7 +27,7 @@ angular.module('awesome-app.tabs')
             SearchService.removeTagObject(tagObject.id);
         };
 
-        $scope.addToTeam = function () {
+        $scope.refresh = function () {
             SearchService.addToTeam($scope.tags);
         };
 
@@ -46,6 +54,19 @@ angular.module('awesome-app.tabs')
 
         var sortResults = function (results, orderBy) {
             return $filter('orderBy')(results, orderBy);
+        };
+
+        var getSelectedTeamState = function () {
+            return TeamsService.getSelectedTeam();
+        };
+
+        var getTeamMembersState = function() {
+            console.log('getting state');
+            var currentTeam = TeamsService.getSelectedTeam();
+            if (currentTeam !== undefined) {
+                return TeamsDataService.getTeamMembers(TeamsService.getSelectedTeam());
+            }
+            return [];
         };
 
     });

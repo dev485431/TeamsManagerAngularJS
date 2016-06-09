@@ -30,6 +30,10 @@ angular.module('awesome-app.teams')
                 return false;
             },
 
+            getTeamMembers: function (teamId) {
+                return teams[teamId].getMembers();
+            },
+
             addTeamMember: function (teamId, teamMember) {
                 if (teamMember instanceof TeamMemberModel) {
                     teams[teamId].addMember(teamMember);
