@@ -3,7 +3,9 @@
 angular.module('awesome-app.config')
     .constant('teamsConf', {
         teamsLimit: 50,
-        teamMembersLimit: 25
+        teamMembersLimit: 25,
+        oneAccordionAtATime: true,
+        regexpAlphanum: /^[A-Za-z0-9 ]+$/
     })
     .constant('tabsConf', {
         searchTab: {
