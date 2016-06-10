@@ -6,8 +6,11 @@ angular.module('awesome-app.config')
         teamMembersLimit: 25
     })
     .constant('listConf', {
-        itemsPerPage: 10,
+        paginationItemsPerPage: 10,
         paginationMaxSize: 6,
-        showBoundaryLinks: true,
-        defaultSortType: 'name'
+        showPaginationBoundaryLinks: true,
+        defaultListSortType: 'name'
+    })
+    .constant('searchConf', {
+        defaultAutoCompleteSortType: 'name'
     });

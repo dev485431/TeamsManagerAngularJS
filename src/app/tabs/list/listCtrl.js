@@ -20,10 +20,10 @@ var ListCtrl = function ($scope, $filter, listConf, StaffDataService, StaffServi
 
 ListCtrl.prototype = function () {
     var init = function ($scope, $filter, listConf, StaffDataService) {
-            $scope.itemsPerPage = listConf.itemsPerPage;
+            $scope.itemsPerPage = listConf.paginationItemsPerPage;
             $scope.maxSize = listConf.paginationMaxSize;
-            $scope.boundaryLinks = listConf.showBoundaryLinks;
-            $scope.sortType = listConf.defaultSortType;
+            $scope.boundaryLinks = listConf.showPaginationBoundaryLinks;
+            $scope.sortType = listConf.defaultListSortType;
             $scope.currentPage = 1;
             $scope.sortReverse = false;
             $scope.searchTerm = '';
