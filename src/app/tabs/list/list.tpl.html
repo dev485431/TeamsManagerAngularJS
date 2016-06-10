@@ -1,90 +1,88 @@
-<div ng-controller="ListCtrl">
-    <div class="row">
-        <form>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="pull-left glyphicon glyphicon glyphicon-search"></i></div>
-                    <input type="text" class="form-control" placeholder="Filter" ng-model="searchTerm">
-                </div>
+<div class="row">
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="pull-left glyphicon glyphicon glyphicon-search"></i></div>
+                <input type="text" class="form-control" placeholder="Filter" ng-model="searchTerm">
             </div>
-        </form>
-    </div>
-
-
-    <pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize"
-                boundary-links="boundaryLinks" ng-model="currentPage"></pagination>
-
-    <div class="dropdown pull-right">
-        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="true">
-            Entries
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href ng-click="itemsPerPage = 10">10</a></li>
-            <li><a href ng-click="itemsPerPage = 20">20</a></li>
-            <li><a href ng-click="itemsPerPage = 30">30</a></li>
-            <li><a href ng-click="itemsPerPage = 40">40</a></li>
-            <li><a href ng-click="itemsPerPage = 50">50</a></li>
-            <li><a href ng-click="itemsPerPage = 100">100</a></li>
-        </ul>
-    </div>
-
-
-    <div class="row">
-        <div class="col-xs-6 col-sm-4">
-            <a href ng-click="sortType = 'name'; sortReverse = !sortReverse">
-                Name
-                <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-                <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
-            </a></div>
-
-        <div class="col-xs-6 col-sm-4">
-            <a href ng-click="sortType = 'job'; sortReverse = !sortReverse">
-                Job title
-                <span ng-show="sortType == 'job' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-                <span ng-show="sortType == 'job' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
-            </a></div>
-
-        <div class="col-xs-6 col-sm-2">
-            <a href ng-click="sortType = 'age'; sortReverse = !sortReverse">
-                Age
-                <span ng-show="sortType == 'age' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-                <span ng-show="sortType == 'age' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
-            </a></div>
-
-        <div class="col-xs-6 col-sm-2">
-            <a href ng-click="sortType = 'grade'; sortReverse = !sortReverse">
-                Grade
-                <span ng-show="sortType == 'grade' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
-                <span ng-show="sortType == 'grade' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
-            </a></div>
-
-    </div>
-    </br>
-
-    <accordion>
-        <accordion-group ng-repeat="employee in pageData | orderBy:sortType:sortReverse | filter:searchTerm">
-            <accordion-heading>
-                <div class="row" ng-click="setSelectedEmployee(employee.id)">
-                    <div class="col-xs-6 col-sm-4" tooltip="{{employee.grade}}, {{employee.job}}">{{employee.name}}
-                    </div>
-                    <div class="col-xs-6 col-sm-4">{{employee.job}}</div>
-                    <div class="col-xs-6 col-sm-2">{{employee.age}}</div>
-                    <div class="col-xs-6 col-sm-2">{{employee.grade}}</div>
-                </div>
-            </accordion-heading>
-
-            <div class="pull-right">
-                <button class="btn btn-default btn-xs" ng-disabled="setAddButtonStatus()"
-                        ng-click="addTeamMember(employee.id)">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </div>
-            <div class="pull-left">
-                Comments and reviews.
-            </div>
-
-        </accordion-group>
-    </accordion>
+        </div>
+    </form>
 </div>
+
+
+<pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize"
+            boundary-links="boundaryLinks" ng-model="currentPage"></pagination>
+
+<div class="dropdown pull-right">
+    <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="true">
+        Entries
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href ng-click="itemsPerPage = 10">10</a></li>
+        <li><a href ng-click="itemsPerPage = 20">20</a></li>
+        <li><a href ng-click="itemsPerPage = 30">30</a></li>
+        <li><a href ng-click="itemsPerPage = 40">40</a></li>
+        <li><a href ng-click="itemsPerPage = 50">50</a></li>
+        <li><a href ng-click="itemsPerPage = 100">100</a></li>
+    </ul>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-6 col-sm-4">
+        <a href ng-click="sortType = 'name'; sortReverse = !sortReverse">
+            Name
+            <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+        </a></div>
+
+    <div class="col-xs-6 col-sm-4">
+        <a href ng-click="sortType = 'job'; sortReverse = !sortReverse">
+            Job title
+            <span ng-show="sortType == 'job' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'job' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+        </a></div>
+
+    <div class="col-xs-6 col-sm-2">
+        <a href ng-click="sortType = 'age'; sortReverse = !sortReverse">
+            Age
+            <span ng-show="sortType == 'age' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'age' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+        </a></div>
+
+    <div class="col-xs-6 col-sm-2">
+        <a href ng-click="sortType = 'grade'; sortReverse = !sortReverse">
+            Grade
+            <span ng-show="sortType == 'grade' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+            <span ng-show="sortType == 'grade' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+        </a></div>
+
+</div>
+</br>
+
+<accordion>
+    <accordion-group ng-repeat="employee in pageData | orderBy:sortType:sortReverse | filter:searchTerm">
+        <accordion-heading>
+            <div class="row" ng-click="setSelectedEmployee(employee.id)">
+                <div class="col-xs-6 col-sm-4" tooltip="{{employee.grade}}, {{employee.job}}">{{employee.name}}
+                </div>
+                <div class="col-xs-6 col-sm-4">{{employee.job}}</div>
+                <div class="col-xs-6 col-sm-2">{{employee.age}}</div>
+                <div class="col-xs-6 col-sm-2">{{employee.grade}}</div>
+            </div>
+        </accordion-heading>
+
+        <div class="pull-right">
+            <button class="btn btn-default btn-xs" ng-disabled="setAddButtonStatus()"
+                    ng-click="addTeamMember(employee.id)">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+        <div class="pull-left">
+            Comments and reviews.
+        </div>
+
+    </accordion-group>
+</accordion>

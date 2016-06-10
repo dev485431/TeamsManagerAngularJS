@@ -1,46 +1,44 @@
 'use strict';
 
-angular.module('awesome-app.tabs')
-    .controller('ListCtrl', function ($scope, $filter, StaffDataService, StaffService, TeamsDataService, TeamsService) {
+var ListCtrl = function ($scope, $filter, listConf, StaffDataService, StaffService, TeamsDataService, TeamsService) {
+    var _this = this;
+    _this.init($scope, $filter, listConf, StaffDataService);
 
-        $scope.currentPage = 1;
-        $scope.itemsPerPage = 10;
-        $scope.maxSize = 6;
-        $scope.boundaryLinks = true;
+    $scope.setAddButtonStatus = function () {
+        return _this.setAddButtonStatus(TeamsService, StaffService, TeamsDataService);
+    };
 
-        $scope.sortType = 'name';
-        $scope.sortReverse = false;
-        $scope.searchTerm = '';
+    $scope.addTeamMember = function (employeeId) {
+        _this.addTeamMember(employeeId, StaffDataService, TeamsService, TeamsDataService);
+    };
 
-        StaffDataService.getStaff()
-            .then(function (data) {
-                processData(data);
-            });
+    $scope.setSelectedEmployee = function (employeeId) {
+        _this.setSelectedEmployee(employeeId, StaffService);
+    };
+};
 
-        $scope.setSelectedEmployee = function (employeeId) {
-            StaffService.setSelectedEmployee(employeeId);
-        };
 
-        $scope.setAddButtonStatus = function () {
-            var disabled = true,
-                currentTeam = TeamsService.getSelectedTeam(),
-                currentEmployee = StaffService.getSelectedEmployee();
+ListCtrl.prototype = function () {
+    var init = function ($scope, $filter, listConf, StaffDataService) {
+            $scope.itemsPerPage = listConf.itemsPerPage;
+            $scope.maxSize = listConf.paginationMaxSize;
+            $scope.boundaryLinks = listConf.showBoundaryLinks;
+            $scope.sortType = listConf.defaultSortType;
+            $scope.currentPage = 1;
+            $scope.sortReverse = false;
+            $scope.searchTerm = '';
 
-            if (currentEmployee !== undefined && currentTeam !== undefined) {
-                if (!TeamsDataService.isAlreadyTeamMember(currentTeam, currentEmployee)) {
-                    disabled = false;
-                }
-            }
-            return disabled;
-        };
+            getData(StaffDataService)
+                .then(function (data) {
+                    processData($scope, $filter, data);
+                });
+        },
 
-        $scope.addTeamMember = function (employeeId) {
-            var employee = StaffDataService.getEmployeeById(employeeId),
-                selectedTeamId = TeamsService.getSelectedTeam();
-            TeamsDataService.addTeamMember(selectedTeamId, employee);
-        };
+        getData = function (StaffDataService) {
+            return StaffDataService.getStaff();
+        },
 
-        var processData = function (data) {
+        processData = function ($scope, $filter, data) {
             $scope.totalItems = data.length;
 
             $scope.$watch('currentPage + searchTerm + sortReverse + itemsPerPage', function () {
@@ -52,6 +50,41 @@ angular.module('awesome-app.tabs')
                 $scope.totalItems = filteredData.length || sortedData.length;
                 $scope.pageData = filteredData.slice(begin, end);
             });
+        },
+
+        setAddButtonStatus = function (TeamsService, StaffService, TeamsDataService) {
+            var disabled = true,
+                currentTeam = TeamsService.getSelectedTeam(),
+                currentEmployee = StaffService.getSelectedEmployee();
+
+            if (currentEmployee !== undefined && currentTeam !== undefined) {
+                if (!TeamsDataService.isAlreadyTeamMember(currentTeam, currentEmployee)) {
+                    disabled = false;
+                }
+            }
+            return disabled;
+        },
+
+        addTeamMember = function (employeeId, StaffDataService, TeamsService, TeamsDataService) {
+            var employee = StaffDataService.getEmployeeById(employeeId),
+                selectedTeamId = TeamsService.getSelectedTeam();
+            TeamsDataService.addTeamMember(selectedTeamId, employee);
+        },
+
+        setSelectedEmployee = function (employeeId, StaffService) {
+            StaffService.setSelectedEmployee(employeeId);
         };
 
-    });
+    return {
+        init: init,
+        setAddButtonStatus: setAddButtonStatus,
+        addTeamMember: addTeamMember,
+        setSelectedEmployee: setSelectedEmployee
+    };
+
+}();
+
+ListCtrl.$inject = ['$scope', '$filter', 'listConf', 'StaffDataService', 'StaffService', 'TeamsDataService', 'TeamsService'];
+
+angular.module('awesome-app.tabs')
+    .controller('ListCtrl', ListCtrl);

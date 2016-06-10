@@ -1,14 +1,16 @@
 'use strict';
 
 angular.module('awesome-app.teams')
-    .controller('TeamsCtrl', function ($scope, TeamsDataService, SearchService, TeamsService, TeamMemberCollection) {
+    .controller('TeamsCtrl', function ($scope, teamsConf, TeamsDataService, SearchService, TeamsService, TeamMemberCollection) {
 
+        var teamsLimit = teamsConf.teamsLimit;
         $scope.oneAtATime = true;
         $scope.teams = TeamsDataService.getTeams();
         $scope.regexpAlphanum = /^[A-Za-z0-9 ]+$/;
 
         $scope.addTeam = function (teamName, isFormValid) {
-            if (isFormValid) {
+            var currentTeams = TeamsDataService.getTeams();
+            if (isFormValid && currentTeams.length < teamsLimit) {
                 TeamsDataService.addTeam(new TeamMemberCollection(teamName));
                 $scope.teamName = null;
             }
@@ -22,7 +24,6 @@ angular.module('awesome-app.teams')
 
         $scope.setSelectedTeam = function (index) {
             TeamsService.setSelectedTeam(index);
-            // console.log("Selected team in service: " + TeamsService.getSelectedTeam());
         };
 
         $scope.removeTeamMember = function (memberId) {
