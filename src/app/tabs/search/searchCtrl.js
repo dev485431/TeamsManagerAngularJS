@@ -64,7 +64,6 @@ SearchCtrl.prototype = function () {
             if (currentTags.length > 0 && currentTeam !== undefined) {
                 disabled = false;
             }
-            console.log(disabled);
             return disabled;
         },
 

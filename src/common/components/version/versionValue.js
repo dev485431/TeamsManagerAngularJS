@@ -2,4 +2,4 @@
 
 angular.module('awesome-app.common.components.version')
 
-.value('version', '0.1');
+.value('version', '1.0');

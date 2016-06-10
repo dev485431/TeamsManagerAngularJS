@@ -47,6 +47,7 @@ angular.module('awesome-app.tabs')
             }
 
         };
+        
         return searchService;
 
     });
