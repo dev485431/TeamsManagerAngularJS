@@ -16,6 +16,7 @@ angular.module('awesome-app.tabs')
             }
 
         };
+        
         return staffService;
 
     });
