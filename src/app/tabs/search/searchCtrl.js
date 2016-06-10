@@ -17,7 +17,7 @@ var SearchCtrl = function ($scope, $filter, searchConf, StaffDataService, TeamsS
     };
 
     $scope.setRefreshButtonStatus = function () {
-        _this.setRefreshButtonStatus(TeamsService, SearchService);
+        return _this.setRefreshButtonStatus(TeamsService, SearchService);
     };
 
     $scope.matchAnyWords = function (searchText) {
@@ -64,6 +64,7 @@ SearchCtrl.prototype = function () {
             if (currentTags.length > 0 && currentTeam !== undefined) {
                 disabled = false;
             }
+            console.log(disabled);
             return disabled;
         },
 
