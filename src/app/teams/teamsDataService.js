@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('awesome-app.teams')
-    .factory('TeamsDataService', function (TeamMemberModel, TeamMemberCollection) {
+    .factory('TeamsDataService', function (teamsConf, TeamMemberModel, TeamMemberCollection) {
 
         var teams = [];
+        var teamMembersLimit = teamsConf.teamMembersLimit;
 
         var teamsDataService = {
 
@@ -35,8 +36,9 @@ angular.module('awesome-app.teams')
             },
 
             addTeamMember: function (teamId, teamMember) {
-                if (teamMember instanceof TeamMemberModel) {
-                    teams[teamId].addMember(teamMember);
+                var currentTeam = teams[teamId];
+                if (teamMember instanceof TeamMemberModel && currentTeam.getMembers().length < teamMembersLimit) {
+                    currentTeam.addMember(teamMember);
                 }
             },
 
