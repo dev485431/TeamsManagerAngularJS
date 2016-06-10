@@ -1,7 +1,10 @@
 'use strict';
 
-angular.module('awesome-app.home').
+var HomeCtrl = function ($scope) {
 
-controller('HomeCtrl', function ($scope, $state) {
-    
-});
+};
+
+HomeCtrl.$inject = ['$scope'];
+
+angular.module('awesome-app.home')
+    .controller('HomeCtrl', HomeCtrl);
