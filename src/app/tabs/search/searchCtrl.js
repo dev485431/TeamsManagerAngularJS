@@ -17,7 +17,7 @@ var SearchCtrl = function ($scope, $filter, searchConf, teamsConf, StaffDataServ
     };
 
     $scope.setRefreshButtonStatus = function () {
-        return _this.setRefreshButtonStatus(TeamsService, SearchService);
+        return _this.setRefreshButtonStatus(teamsConf, TeamsService, SearchService);
     };
 
     $scope.setTypeAheadStatus = function () {
@@ -62,12 +62,12 @@ SearchCtrl.prototype = function () {
             SearchService.refresh($scope.tags);
         },
 
-        setRefreshButtonStatus = function (TeamsService, SearchService) {
+        setRefreshButtonStatus = function (teamsConf, TeamsService, SearchService) {
             var disabled = true,
                 currentTeam = TeamsService.getSelectedTeam(),
                 currentTags = SearchService.getTagsObjects();
 
-            if (currentTeam !== undefined && currentTags.length >= 1) {
+            if (currentTeam !== undefined && currentTags.length >= 1 && currentTags.length <= teamsConf.teamMembersLimit) {
                 disabled = false;
             }
             return disabled;

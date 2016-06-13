@@ -4,7 +4,7 @@ angular.module('awesome-app.config')
     .constant('teamsConf', {
         teamNameLengthMax: 33,
         teamsLimit: 50,
-        teamMembersLimit: 25,
+        teamMembersLimit: 2,
         oneAccordionAtATime: true,
         regexpAlphanum: /^[A-Za-z0-9 ]+$/,
         msgNameTaken: 'This team name is taken',
