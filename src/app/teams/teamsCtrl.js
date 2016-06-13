@@ -24,6 +24,7 @@ var TeamsCtrl = function ($scope, teamsConf, TeamsDataService, SearchService, Te
 
 TeamsCtrl.prototype = function () {
     var init = function ($scope, teamsConf, TeamsDataService) {
+            $scope.teamsConf = teamsConf;
             $scope.teams = TeamsDataService.getTeams();
             $scope.teamsLimit = teamsConf.teamsLimit;
             $scope.teamMembersLimit = teamsConf.teamMembersLimit;

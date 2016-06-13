@@ -10,7 +10,9 @@
                ng-pattern="regexpAlphanum" placeholder="Add new team" uniquename required>
         <button type="submit" class="btn btn-default" ng-disabled="addTeamForm.$invalid">+</button>
     </div>
-</form></br>
+</form>
+<span class="small text-info"><u>Limit:</u> {{teamsConf.teamsLimit}} teams with {{teamsConf.teamMembersLimit}} members each.</span>
+</br></br>
 
 <accordion close-others="oneAccordionAtATime">
 

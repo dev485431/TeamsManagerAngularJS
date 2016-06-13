@@ -3,7 +3,7 @@
 angular.module('awesome-app.config')
     .constant('teamsConf', {
         teamsLimit: 50,
-        teamMembersLimit: 2,
+        teamMembersLimit: 25,
         oneAccordionAtATime: true,
         regexpAlphanum: /^[A-Za-z0-9 ]+$/
     })
