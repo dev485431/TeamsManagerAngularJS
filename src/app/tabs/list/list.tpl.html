@@ -21,8 +21,8 @@
     </button>
 
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li ng-repeat="number in entriesPerPage">
-            <a href ng-click="itemsPerPage = number">{{number}}</a>
+        <li ng-repeat="numberOfEntries in entriesPerPage">
+            <a href ng-click="setItemsPerPage(numberOfEntries)">{{numberOfEntries}}</a>
         </li>
     </ul>
 

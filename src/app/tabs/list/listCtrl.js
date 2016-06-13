@@ -15,6 +15,10 @@ var ListCtrl = function ($scope, $filter, listConf, StaffDataService, StaffServi
     $scope.setSelectedEmployee = function (employeeId) {
         _this.setSelectedEmployee(employeeId, StaffService);
     };
+
+    $scope.setItemsPerPage = function (itemsPerPage) {
+        _this.setItemsPerPage(itemsPerPage, $scope);
+    };
 };
 
 
@@ -74,13 +78,18 @@ ListCtrl.prototype = function () {
 
         setSelectedEmployee = function (employeeId, StaffService) {
             StaffService.setSelectedEmployee(employeeId);
+        },
+
+        setItemsPerPage = function (itemsPerPage, $scope) {
+            $scope.itemsPerPage = itemsPerPage;
         };
 
     return {
         init: init,
         setAddButtonStatus: setAddButtonStatus,
         addTeamMember: addTeamMember,
-        setSelectedEmployee: setSelectedEmployee
+        setSelectedEmployee: setSelectedEmployee,
+        setItemsPerPage: setItemsPerPage
     };
 
 }();
