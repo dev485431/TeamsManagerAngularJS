@@ -1,8 +1,8 @@
 'use strict';
 
-var SearchCtrl = function ($scope, $filter, searchConf, StaffDataService, TeamsService, SearchService, TeamsDataService) {
+var SearchCtrl = function ($scope, $filter, searchConf, teamsConf, StaffDataService, TeamsService, SearchService, TeamsDataService) {
     var _this = this;
-    _this.init($scope, searchConf, StaffDataService, TeamsService, TeamsDataService, SearchService);
+    _this.init($scope, searchConf, teamsConf, StaffDataService, TeamsService, TeamsDataService, SearchService);
 
     $scope.addTag = function (tagObject) {
         _this.addTag(tagObject, SearchService);
@@ -30,9 +30,10 @@ var SearchCtrl = function ($scope, $filter, searchConf, StaffDataService, TeamsS
 };
 
 SearchCtrl.prototype = function () {
-    var init = function ($scope, searchConf, StaffDataService, TeamsService, TeamsDataService, SearchService) {
+    var init = function ($scope, searchConf, teamsConf, StaffDataService, TeamsService, TeamsDataService, SearchService) {
             $scope.autoCompleteSortType = searchConf.defaultAutoCompleteSortType;
             $scope.searchConf = searchConf;
+            $scope.tagsLimit = teamsConf.teamMembersLimit;
             $scope.staffData = [];
             $scope.tags = [];
 
@@ -64,7 +65,7 @@ SearchCtrl.prototype = function () {
         setRefreshButtonStatus = function (TeamsService, SearchService) {
             var disabled = true,
                 currentTeam = TeamsService.getSelectedTeam(),
-                currentTags = SearchService.getCurrentTagsObjects();
+                currentTags = SearchService.getTagsObjects();
 
             if (currentTeam !== undefined && currentTags.length >= 1) {
                 disabled = false;
@@ -101,7 +102,7 @@ SearchCtrl.prototype = function () {
             $scope.$watch(function () {
                 return getSelectedTeamState(TeamsService);
             }, function () {
-                $scope.tags = SearchService.getTagsObjects();
+                $scope.tags = SearchService.loadTagsObjects();
             });
         },
 
@@ -109,7 +110,7 @@ SearchCtrl.prototype = function () {
             $scope.$watchCollection(function () {
                 return getTeamMembersState(TeamsService, TeamsDataService);
             }, function () {
-                $scope.tags = SearchService.getTagsObjects();
+                $scope.tags = SearchService.loadTagsObjects();
             });
         },
 
@@ -137,7 +138,7 @@ SearchCtrl.prototype = function () {
 
 }();
 
-SearchCtrl.$inject = ['$scope', '$filter', 'searchConf', 'StaffDataService', 'TeamsService', 'SearchService', 'TeamsDataService'];
+SearchCtrl.$inject = ['$scope', '$filter', 'searchConf', 'teamsConf', 'StaffDataService', 'TeamsService', 'SearchService', 'TeamsDataService'];
 
 angular.module('awesome-app.tabs')
     .controller('SearchCtrl', SearchCtrl);

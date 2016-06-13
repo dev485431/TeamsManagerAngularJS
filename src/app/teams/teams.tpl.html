@@ -1,6 +1,7 @@
 <form name="addTeamForm" class="form-inline" ng-submit="addTeam(teamName, addTeamForm.$valid)" novalidate>
     <div class="form-group">
-        <p class="text-danger" ng-show="addTeamForm.teamName.$error.maxlength">{{teamsConf.msgMaxLength}} {{teamsConf.teamNameLengthMax}}</p>
+        <p class="text-danger" ng-show="addTeamForm.teamName.$error.maxlength">{{teamsConf.msgMaxLength}}
+            {{teamsConf.teamNameLengthMax}}</p>
         <p class="text-danger" ng-show="addTeamForm.teamName.$error.pattern">{{teamsConf.msgLatinCharsOnly}}</p>
         <p class="text-danger" ng-show="addTeamForm.teamName.$error.uniquename">{{teamsConf.msgNameTaken}}</p>
 

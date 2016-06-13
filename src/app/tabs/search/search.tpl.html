@@ -24,6 +24,7 @@
                             template="tagsTemplate"
                             on-tag-added="addTag($tag)"
                             on-tag-removed="removeTag($tag)"
+                            max-tags="{{tagsLimit}}"
                             placeholder="{{searchConf.tagsPlaceholder}}"
                             replace-spaces-with-dashes="{{searchConf.tagsReplaceSpacesWithDashes}}"
                             add-from-autocomplete-only="{{searchConf.tagsAddFromAutocompleteOnly}}">
