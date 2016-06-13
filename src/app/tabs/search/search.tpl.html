@@ -18,20 +18,21 @@
 
             <div class="input-group-lg">
                 <tags-input ng-model="tags"
-                            placeholder="Search by name, job, age or grade"
-                            replace-spaces-with-dashes="false"
-                            add-from-autocomplete-only="true"
                             display-property="name"
                             key-property="id"
+                            ng-disabled="setTypeAheadStatus()"
                             template="tagsTemplate"
                             on-tag-added="addTag($tag)"
-                            on-tag-removed="removeTag($tag)">
+                            on-tag-removed="removeTag($tag)"
+                            placeholder="{{searchConf.tagsPlaceholder}}"
+                            replace-spaces-with-dashes="{{searchConf.tagsReplaceSpacesWithDashes}}"
+                            add-from-autocomplete-only="{{searchConf.tagsAddFromAutocompleteOnly}}">
                     <auto-complete source="matchAnyWords($query)"
-                                   min-length="0"
-                                   max-results-to-show="9999"
-                                   highlight-matched-text="false"
-                                   debounce-delay="200"
-                                   template="autocompleteTemplate">
+                                   template="autocompleteTemplate"
+                                   min-length="{{searchConf.autocompleteMinLength}}"
+                                   max-results-to-show="{{searchConf.autocompleteMaxResults}}"
+                                   highlight-matched-text="{{searchConf.autocompleteHighlightMatchedWords}}"
+                                   debounce-delay="{{searchConf.autocompleteDebounceDelay}}">
                     </auto-complete>
                 </tags-input>
             </div>

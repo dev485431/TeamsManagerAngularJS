@@ -30,5 +30,12 @@ angular.module('awesome-app.config')
         defaultListSortType: 'name'
     })
     .constant('searchConf', {
-        defaultAutoCompleteSortType: 'name'
+        defaultAutoCompleteSortType: 'name',
+        tagsPlaceholder: 'Search by name, job, age or grade',
+        tagsReplaceSpacesWithDashes: false,
+        tagsAddFromAutocompleteOnly: true,
+        autocompleteMinLength: 0,
+        autocompleteMaxResults: 9999,
+        autocompleteHighlightMatchedWords: false,
+        autocompleteDebounceDelay: 200
     });

@@ -17,7 +17,11 @@ var SearchCtrl = function ($scope, $filter, searchConf, StaffDataService, TeamsS
     };
 
     $scope.setRefreshButtonStatus = function () {
-        return _this.setRefreshButtonStatus(TeamsService, SearchService);
+        return _this.setRefreshButtonStatus(TeamsService);
+    };
+
+    $scope.setTypeAheadStatus = function () {
+        return _this.setTypeAheadStatus(TeamsService);
     };
 
     $scope.matchAnyWords = function (searchText) {
@@ -28,6 +32,7 @@ var SearchCtrl = function ($scope, $filter, searchConf, StaffDataService, TeamsS
 SearchCtrl.prototype = function () {
     var init = function ($scope, searchConf, StaffDataService, TeamsService, TeamsDataService, SearchService) {
             $scope.autoCompleteSortType = searchConf.defaultAutoCompleteSortType;
+            $scope.searchConf = searchConf;
             $scope.staffData = [];
             $scope.tags = [];
 
@@ -56,7 +61,7 @@ SearchCtrl.prototype = function () {
             SearchService.refresh($scope.tags);
         },
 
-        setRefreshButtonStatus = function (TeamsService, SearchService) {
+        setRefreshButtonStatus = function (TeamsService) {
             var disabled = true,
                 currentTeam = TeamsService.getSelectedTeam();
 
@@ -64,6 +69,17 @@ SearchCtrl.prototype = function () {
                 disabled = false;
             }
             return disabled;
+        },
+
+        setTypeAheadStatus = function (TeamsService) {
+            var disabled = true,
+                currentTeam = TeamsService.getSelectedTeam();
+
+            if (currentTeam !== undefined) {
+                disabled = false;
+            }
+            return disabled;
+
         },
 
         matchAnyWords = function (searchText, $scope, $filter) {
@@ -114,6 +130,7 @@ SearchCtrl.prototype = function () {
         removeTag: removeTag,
         refresh: refresh,
         setRefreshButtonStatus: setRefreshButtonStatus,
+        setTypeAheadStatus: setTypeAheadStatus,
         matchAnyWords: matchAnyWords
     };
 
