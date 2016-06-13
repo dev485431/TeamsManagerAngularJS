@@ -15,6 +15,10 @@ angular.module('awesome-app.tabs')
                 return tagsObjects;
             },
 
+            getCurrentTagsObjects: function () {
+                return tagsObjects;
+            },
+
             addTagObject: function (tagObject) {
                 if (tagObject instanceof TeamMemberModel) {
                     tagsObjects.push(tagObject);
