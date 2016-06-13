@@ -12,6 +12,10 @@ angular.module('awesome-app.teams')
                 return teams;
             },
 
+            getTeam: function (teamId) {
+                return teams[teamId];
+            },
+
             addTeam: function (collection) {
                 if (collection instanceof TeamMemberCollection) {
                     teams.push(collection);
@@ -20,6 +24,12 @@ angular.module('awesome-app.teams')
 
             removeTeam: function (teamId) {
                 teams.splice(teamId, 1);
+            },
+
+            setTeam: function (teamId, collection) {
+                if (collection instanceof TeamMemberCollection) {
+                    teams[teamId] = collection;
+                }
             },
 
             teamNameExists: function (teamName) {

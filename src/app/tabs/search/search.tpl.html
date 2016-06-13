@@ -3,7 +3,7 @@
         <div class="form-group">
             <div class="input-group">
                 <div class="radio">
-                    Order results by:
+                    Order typeahead by:
                     <label><input type="radio" value="name" ng-model="autoCompleteSortType"
                                   checked="checked">name</label>
                     <label><input type="radio" value="age" ng-model="autoCompleteSortType">age</label>
@@ -43,7 +43,7 @@
 <script type="text/ng-template" id="tagsTemplate">
     <div>
         <div tooltip="{{data.age}}, {{data.job}}, {{data.grade}}">
-            <span>{{data.name}}</span>
+            <span>#{{$index+1}} {{data.name}}</span>
             <a class="remove-button" ng-click="$removeTag()">&#10006;</a>
         </div>
     </div>

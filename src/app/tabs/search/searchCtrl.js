@@ -53,15 +53,14 @@ SearchCtrl.prototype = function () {
         },
 
         refresh = function ($scope, SearchService) {
-            SearchService.addToTeam($scope.tags);
+            SearchService.refresh($scope.tags);
         },
 
         setRefreshButtonStatus = function (TeamsService, SearchService) {
             var disabled = true,
-                currentTeam = TeamsService.getSelectedTeam(),
-                currentTags = SearchService.getTagsObjects();
+                currentTeam = TeamsService.getSelectedTeam();
 
-            if (currentTags.length > 0 && currentTeam !== undefined) {
+            if (currentTeam !== undefined) {
                 disabled = false;
             }
             return disabled;

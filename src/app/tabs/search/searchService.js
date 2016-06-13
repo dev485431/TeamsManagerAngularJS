@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('awesome-app.tabs')
-    .factory('SearchService', function (TeamMemberModel, TeamsService, TeamsDataService) {
+    .factory('SearchService', function (TeamMemberModel, TeamMemberCollection, TeamsService, TeamsDataService) {
 
         var tagsObjects = [];
 
@@ -10,9 +10,7 @@ angular.module('awesome-app.tabs')
             getTagsObjects: function () {
                 if (TeamsService.getSelectedTeam() !== undefined) {
                     var selectedTeamMembers = TeamsDataService.getTeamMembers(TeamsService.getSelectedTeam());
-                    if (selectedTeamMembers.length > 0) {
-                        tagsObjects = selectedTeamMembers.slice(0);
-                    }
+                    tagsObjects = selectedTeamMembers.slice(0);
                 }
                 return tagsObjects;
             },
@@ -33,21 +31,21 @@ angular.module('awesome-app.tabs')
                 }
             },
 
-            addToTeam: function (tagObjects) {
-                for (var i = 0; i < tagObjects.length; i++) {
-                    var currentTagObject = tagObjects[i],
-                        currentTagObjectId = currentTagObject.id,
-                        selectedTeamId = TeamsService.getSelectedTeam();
+            refresh: function (tagObjects) {
+                var selectedTeamId = TeamsService.getSelectedTeam(),
+                    newTeamMembers = [];
 
-                    if (!TeamsDataService.isAlreadyTeamMember(selectedTeamId, currentTagObjectId)) {
-                        var addedEmployee = new TeamMemberModel(currentTagObject.id, currentTagObject.name, currentTagObject.age, currentTagObject.grade, currentTagObject.job);
-                        TeamsDataService.addTeamMember(selectedTeamId, addedEmployee);
-                    }
+                for (var i = 0; i < tagObjects.length; i++) {
+                    var currentTagObject = tagObjects[i];
+                    var addedEmployee = new TeamMemberModel(currentTagObject.id, currentTagObject.name, currentTagObject.age, currentTagObject.grade, currentTagObject.job);
+                    newTeamMembers.push(addedEmployee);
                 }
+
+                TeamsDataService.getTeam(selectedTeamId).setMembers(newTeamMembers);
             }
 
         };
-        
+
         return searchService;
 
     });
