@@ -9,7 +9,8 @@ angular.module('awesome-app.config')
         regexpAlphanum: /^[A-Za-z0-9 ]+$/,
         msgNameTaken: 'This team name is taken',
         msgLatinCharsOnly: 'Use only latin letters, numbers and spaces',
-        msgMaxLength: 'Characters limit:'
+        msgMaxLength: 'Characters limit: ',
+        msgAddTeamPlaceholder: 'Add new team'
     })
     .constant('tabsConf', {
         searchTab: {

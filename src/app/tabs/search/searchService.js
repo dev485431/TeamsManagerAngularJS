@@ -29,7 +29,6 @@ angular.module('awesome-app.tabs')
                 for (var i = 0; i < tagsObjects.length; i++) {
                     if (tagsObjects[i].id === tagObjectId) {
                         tagsObjects.splice(i, 1);
-                        console.log(tagsObjects);
                         break;
                     }
                 }
