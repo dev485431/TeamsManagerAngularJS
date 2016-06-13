@@ -2,10 +2,14 @@
 
 angular.module('awesome-app.config')
     .constant('teamsConf', {
+        teamNameLengthMax: 33,
         teamsLimit: 50,
         teamMembersLimit: 25,
         oneAccordionAtATime: true,
-        regexpAlphanum: /^[A-Za-z0-9 ]+$/
+        regexpAlphanum: /^[A-Za-z0-9 ]+$/,
+        msgNameTaken: 'This team name is taken',
+        msgLatinCharsOnly: 'Use only latin letters, numbers and spaces',
+        msgMaxLength: 'Characters limit:'
     })
     .constant('tabsConf', {
         searchTab: {

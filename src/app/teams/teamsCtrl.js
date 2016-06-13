@@ -26,15 +26,12 @@ TeamsCtrl.prototype = function () {
     var init = function ($scope, teamsConf, TeamsDataService) {
             $scope.teamsConf = teamsConf;
             $scope.teams = TeamsDataService.getTeams();
-            $scope.teamsLimit = teamsConf.teamsLimit;
-            $scope.teamMembersLimit = teamsConf.teamMembersLimit;
             $scope.oneAccordionAtATime = teamsConf.oneAccordionAtATime;
-            $scope.regexpAlphanum = teamsConf.regexpAlphanum;
         },
 
         addTeam = function (teamName, isFormValid, $scope, TeamsDataService, TeamMemberCollection) {
             var currentTeams = TeamsDataService.getTeams();
-            if (isFormValid && currentTeams.length < $scope.teamsLimit) {
+            if (isFormValid && currentTeams.length < $scope.teamsConf.teamsLimit) {
                 TeamsDataService.addTeam(new TeamMemberCollection(teamName));
                 $scope.teamName = null;
             }

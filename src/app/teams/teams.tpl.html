@@ -1,13 +1,12 @@
 <form name="addTeamForm" class="form-inline" ng-submit="addTeam(teamName, addTeamForm.$valid)" novalidate>
     <div class="form-group">
-        <p class="text-danger" ng-show="addTeamForm.teamName.$error.maxlength">Can't be longer than 40
-            characters</p>
-        <p class="text-danger" ng-show="addTeamForm.teamName.$error.pattern">Use only latin letters, numbers and
-            spaces</p>
-        <p class="text-danger" ng-show="addTeamForm.teamName.$error.uniquename">This team name is taken</p>
+        <p class="text-danger" ng-show="addTeamForm.teamName.$error.maxlength">{{teamsConf.msgMaxLength}} {{teamsConf.teamNameLengthMax}}</p>
+        <p class="text-danger" ng-show="addTeamForm.teamName.$error.pattern">{{teamsConf.msgLatinCharsOnly}}</p>
+        <p class="text-danger" ng-show="addTeamForm.teamName.$error.uniquename">{{teamsConf.msgNameTaken}}</p>
 
-        <input type="text" class="form-control" name="teamName" ng-model="teamName" ng-maxlength="40"
-               ng-pattern="regexpAlphanum" placeholder="Add new team" uniquename required>
+        <input type="text" class="form-control" name="teamName" ng-model="teamName"
+               ng-maxlength="teamsConf.teamNameLengthMax"
+               ng-pattern="teamsConf.regexpAlphanum" placeholder="Add new team" uniquename required>
         <button type="submit" class="btn btn-default" ng-disabled="addTeamForm.$invalid">+</button>
     </div>
 </form>
@@ -19,7 +18,7 @@
     <accordion-group ng-repeat="team in teams">
         <accordion-heading>
             <div ng-click="setSelectedTeam($index)">
-                {{team.collectionName}}
+                {{$index+1}}. {{team.collectionName}}
             </div>
         </accordion-heading>
 
