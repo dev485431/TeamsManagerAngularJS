@@ -28,7 +28,8 @@ angular.module('awesome-app.config')
         paginationItemsPerPage: 10,
         paginationMaxSize: 6,
         showPaginationBoundaryLinks: true,
-        defaultListSortType: 'name'
+        defaultListSortType: 'name',
+        entriesPerPage: ['10', '20', '30', '40', '50', '100']
     })
     .constant('searchConf', {
         defaultAutoCompleteSortType: 'name',

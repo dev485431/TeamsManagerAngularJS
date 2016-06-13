@@ -24,6 +24,7 @@ ListCtrl.prototype = function () {
             $scope.maxSize = listConf.paginationMaxSize;
             $scope.boundaryLinks = listConf.showPaginationBoundaryLinks;
             $scope.sortType = listConf.defaultListSortType;
+            $scope.entriesPerPage = listConf.entriesPerPage;
             $scope.currentPage = 1;
             $scope.sortReverse = false;
             $scope.searchTerm = '';

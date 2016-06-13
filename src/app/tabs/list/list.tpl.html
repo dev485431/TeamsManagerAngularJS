@@ -19,14 +19,13 @@
         Entries
         <span class="caret"></span>
     </button>
+
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href ng-click="itemsPerPage = 10">10</a></li>
-        <li><a href ng-click="itemsPerPage = 20">20</a></li>
-        <li><a href ng-click="itemsPerPage = 30">30</a></li>
-        <li><a href ng-click="itemsPerPage = 40">40</a></li>
-        <li><a href ng-click="itemsPerPage = 50">50</a></li>
-        <li><a href ng-click="itemsPerPage = 100">100</a></li>
+        <li ng-repeat="number in entriesPerPage">
+            <a href ng-click="itemsPerPage = number">{{number}}</a>
+        </li>
     </ul>
+
 </div>
 
 
