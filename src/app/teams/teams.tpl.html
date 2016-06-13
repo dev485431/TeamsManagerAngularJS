@@ -29,7 +29,7 @@
         </div>
         <div ng-repeat="member in team.models">
             <div tooltip="{{member.age}}, {{member.grade}}, {{member.job}}">
-                {{member.name}}
+                {{$index+1}}. {{member.name}}
                 <span class="glyphicon glyphicon-remove" ng-click="removeTeamMember(member.id)"></span>
             </div>
         </div>
