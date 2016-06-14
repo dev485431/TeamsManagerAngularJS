@@ -50,10 +50,10 @@ ListCtrl.prototype = function () {
                 var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
                     end = begin + $scope.itemsPerPage;
 
-                var sortedData = $filter('orderBy')(data, $scope.sortType, $scope.sortReverse);
-                var filteredData = $filter('filter')(sortedData, $scope.searchTerm);
-                $scope.totalItems = filteredData.length || sortedData.length;
-                $scope.pageData = filteredData.slice(begin, end);
+                var filteredData = $filter('filter')(data, $scope.searchTerm);
+                var sortedData = $filter('orderBy')(filteredData, $scope.sortType, $scope.sortReverse);
+                $scope.totalItems = sortedData.length;
+                $scope.pageData = sortedData.slice(begin, end);
             });
         },
 
