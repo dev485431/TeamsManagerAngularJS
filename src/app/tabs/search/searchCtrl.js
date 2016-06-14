@@ -34,6 +34,7 @@ SearchCtrl.prototype = function () {
             $scope.autoCompleteSortType = searchConf.defaultAutoCompleteSortType;
             $scope.searchConf = searchConf;
             $scope.tagsLimit = teamsConf.teamMembersLimit;
+            $scope.typeAheadSortReverse = false;
             $scope.staffData = [];
             $scope.tags = [];
 
@@ -90,12 +91,12 @@ SearchCtrl.prototype = function () {
             for (var i = 0; i < searchWordsArray.length; i++) {
                 results = $filter('filter')(results, searchWordsArray[i]);
             }
-            results = sortResults(results, $scope.autoCompleteSortType, $filter);
+            results = sortResults(results, $scope.autoCompleteSortType, $scope, $filter);
             return results;
         },
 
-        sortResults = function (results, orderBy, $filter) {
-            return $filter('orderBy')(results, orderBy);
+        sortResults = function (results, orderBy, $scope, $filter) {
+            return $filter('orderBy')(results, orderBy, $scope.typeAheadSortReverse);
         },
 
         addSelectedTeamListener = function ($scope, TeamsService, SearchService) {
