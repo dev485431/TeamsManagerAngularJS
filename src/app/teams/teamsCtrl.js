@@ -20,6 +20,10 @@ var TeamsCtrl = function ($scope, teamsConf, TeamsDataService, SearchService, Te
         return _this.removeTeamMember(memberId, TeamsService, TeamsDataService, SearchService);
     };
 
+    $scope.setAddButtonStatus = function (isFormValid) {
+        return _this.setAddButtonStatus(isFormValid, teamsConf, TeamsDataService);
+    };
+
 };
 
 TeamsCtrl.prototype = function () {
@@ -51,6 +55,16 @@ TeamsCtrl.prototype = function () {
             var selectedTeamId = TeamsService.getSelectedTeam();
             TeamsDataService.removeTeamMember(selectedTeamId, memberId);
             SearchService.removeTagObject(memberId);
+        },
+
+        setAddButtonStatus = function (isFormValid, teamsConf, TeamsDataService) {
+            var disabled = false,
+                currentTeams = TeamsDataService.getTeams();
+
+            if (!isFormValid || currentTeams.length === teamsConf.teamsLimit) {
+                disabled = true;
+            }
+            return disabled;
         };
 
 
@@ -59,7 +73,8 @@ TeamsCtrl.prototype = function () {
         addTeam: addTeam,
         removeTeam: removeTeam,
         setSelectedTeam: setSelectedTeam,
-        removeTeamMember: removeTeamMember
+        removeTeamMember: removeTeamMember,
+        setAddButtonStatus: setAddButtonStatus
     };
 
 }();

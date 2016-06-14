@@ -9,7 +9,7 @@
                ng-maxlength="teamsConf.teamNameLengthMax"
                ng-pattern="teamsConf.regexpAlphanum" placeholder="{{teamsConf.msgAddTeamPlaceholder}}" uniquename
                required>
-        <button type="submit" class="btn btn-default" ng-disabled="addTeamForm.$invalid">+</button>
+        <button type="submit" class="btn btn-default" ng-disabled="setAddButtonStatus(addTeamForm.$valid)">+</button>
     </div>
 </form>
 <span class="glyphicon glyphicon-info-sign"></span>
