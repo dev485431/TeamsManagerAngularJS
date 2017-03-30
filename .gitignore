@@ -8,6 +8,6 @@ tmp
 build/*
 vendor/*
 npm-debug.log
-ProjectsMonitorAngularJS.iml
+*.iml
 build/
 vendor/
